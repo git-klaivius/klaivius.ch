@@ -57,7 +57,7 @@ function getSchedule(month) {
           if(stream_platform == 'twitch'){
             stream_link = "https://www.twitch.tv/klaivius";
           } else if(stream_platform =='youtube'){
-            stream_link = "https://bit.ly/klaivius-yt";
+            stream_link = "https://bit.ly/klvs-yt";
           }
           let stream_formatted_time =
             timeArray[0] + ":" + timeArray[1] + " " + timeArray[2];
