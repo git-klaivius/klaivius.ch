@@ -1,0 +1,62 @@
+<div class="datalog-ctn noselect">
+  <div id="datalog-console">
+    <div id="console-title">INTERNAL DATALOG CONSOLE</div>
+    <div id="console-body">
+      <p style="color: rgba(255, 255, 255, 0.25)">
+        NOTICE // NOW ACCESSING INTERNAL DATALOGS FOR [PROG.26: KLAIVE VIUS].
+        <br />
+        ERROR // DATALOGS CORRUPTED. ATTEMPTING RECOVERY. <span id="console-loader"></span>
+        <br />
+        <span
+          id="data-recovery-success"
+          style="color: rgba(255, 255, 255, 0.25); display: none"
+          >NOTICE // PARTIAL RECOVERY SUCCESSFUL. DISPLAYING DATA.</span
+        >
+        <span
+          id="data-recovery-failed"
+          style="color: rgba(255, 255, 255, 0.25); display: none"
+          >ERROR // DATA COULD NOT BE RECOVERED. PLEASE TRY AGAIN LATER.</span
+        >
+      </p>
+
+      <p class="mt-1" id="record-count"></p>
+      <br />
+      <ul id="record-list"></ul>
+
+      <p
+        class="mt-1"
+        style="color: rgba(255, 255, 255, 0.25)"
+        id="next-target"
+      ></p>
+
+      <div id="soc-console" style="display:none;">
+        <svg>
+          <use id="twitter_use" href="#twitter_symbol"></use>
+        </svg>
+        <span class="soc-count" id="soc-count-twt"></span><br /><br />
+
+        <svg class="ml-3">
+          <use id="twitch_use" href="#twitch_color"></use>
+        </svg>
+        <span class="soc-count" id="soc-count-tw"></span>
+
+        <svg class="ml-3">
+          <use id="youtube_use" href="#youtube_color"></use>
+        </svg>
+        <span class="soc-count" id="soc-count-yt"></span>
+      </div>
+
+      <p class="bigger" id="soc-progbar" style="display:none;">
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  $("document").ready(function () {
+    loader("#console-loader", "show");
+    setTimeout(fetchDatalogData, 1000);
+  });
+  
+</script>

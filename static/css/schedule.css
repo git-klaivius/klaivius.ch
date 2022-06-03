@@ -1,0 +1,230 @@
+#schedule-over-ctn {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#schedule-ctn * {
+  font-family: var(--f-smooch);
+  transition: 0.2s;
+}
+#schedule-ctn {
+  display: block;
+  text-align: center;
+  justify-content: center;
+  /* background-color: blue; */
+  width: 90%;
+}
+
+#sched_note {
+  font-size: var(--fsmin4);
+  color: var(--col1);
+}
+#month_selector {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  gap: 10px;
+}
+
+.month_button {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--fs2);
+  transition: none !important;
+}
+.month_button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.month_button_active {
+  border: 1px solid var(--col1);
+  color: var(--col1);
+  background: linear-gradient(
+    -90deg,
+    rgba(60, 122, 137, 0.3) 20%,
+    rgba(224, 225, 221, 0) 100%
+  );
+}
+
+.sched-date-ctn {
+  display: flex;
+  align-items: flex-end;
+  /* background-color: red; */
+  width: 100%;
+  height: 50px;
+}
+.sched-date-bg1 {
+  background-color: var(--col1);
+  height: 70%;
+  width: 15%;
+}
+.sched-date {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 70% 30%;
+  /* background-color: blue; */
+  padding: 0 10px;
+  /* min-width: 100px; */
+}
+.sched-date * {
+  display: flex;
+}
+.sched-date .day {
+  align-items: flex-end;
+  line-height: var(--fs2);
+  color: var(--col1);
+  font-size: var(--fs6);
+}
+.sched-date .date {
+  font-size: var(--fs1);
+}
+.sched-date-bg2 {
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+  background-color: var(--col1);
+  height: 70%;
+  width: 100%;
+}
+
+.stream-ctn {
+  width: 95%;
+  height: 40px;
+  display: grid;
+  grid-template-columns: 40px 90px 1fr;
+  text-align: left;
+  position: relative;
+}
+.stream-ctn * {
+  font-size: var(--fs2);
+}
+
+.stream-ctn > div {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+.stream-ctn:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  border-radius: 5px;
+  background: linear-gradient(
+    -90deg,
+    rgba(60, 122, 137, 0.25) 20%,
+    rgba(224, 225, 221, 0) 100%
+  );
+}
+.stream-platform {
+  margin-left: 5px;
+}
+.stream-platform svg {
+  width: 100%;
+  height: 40px;
+}
+.stream-platform svg #youtube_use {
+  fill: #ff0000;
+}
+.stream-time {
+  color: var(--col1);
+  font-size: var(--fs4);
+  justify-content: flex-end;
+}
+.stream-title {
+  margin-left: 10px;
+  font-size: var(--fs1);
+}
+
+#archived-sched-ctn {
+  width: 100%;
+  display: none;
+}
+.archived-sched-title {
+  border: 1px solid var(--col1);
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 5px 5px 0 0;
+  font-size: var(--fs2);
+  color: var(--col1);
+  text-align: left;
+  width: 100%;
+  background: linear-gradient(
+    -90deg,
+    rgba(60, 122, 137, 0.5) 0%,
+    rgba(224, 225, 221, 0) 100%
+  );
+}
+.archived-sched-title:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+#archived-sched-content {
+  text-align: left;
+  border: 1px solid var(--col1);
+  border-top: none;
+  width: 100%;
+  padding: 1rem;
+  overflow: hidden;
+}
+.archived-sched-close {
+  opacity: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+}
+#archived-sched-content ul li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: var(--fsmin4);
+  padding: 5px 10px;
+}
+#archived-sched-content ul li:hover {
+  background: linear-gradient(
+    -90deg,
+    rgba(60, 122, 137, 0.25) 20%,
+    rgba(224, 225, 221, 0) 100%
+  );
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+#archived-sched-content ul li svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+#sch-loader {
+  font-size: 2rem;
+  color: var(--col1);
+}
+#nostream {
+  color: var(--col1);
+  font-size: var(--fs2);
+  display: none;
+}
+#errormsg,
+#errormsg span {
+  color: rgb(255, 0, 0, 0.8);
+  font-size: var(--fs2);
+  font-weight: 700;
+  background-color: rgb(0, 0, 0);
+}
+.cancelled {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  color: rgb(255, 0, 0, 0.8);
+}
+/* NOT MOBILE */
+@media only screen and (min-width: 820px) {
+  #schedule-ctn {
+    width: 70%;
+  }
+}
+
+.streamlink{
+  text-decoration: none;
+}

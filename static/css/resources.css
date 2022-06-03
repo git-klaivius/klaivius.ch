@@ -1,0 +1,58 @@
+.resources-ctn {
+  width: 100%;
+  /* background-color: blue; */
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+table {
+  margin-top: 1rem;
+  width: 100%;
+  overflow: hidden;
+  border-spacing: 0;
+  font-size: var(--fsmin3);
+  table-layout: fixed;
+}
+
+table th,
+table td {
+  padding: 1rem 5px;
+  text-align: center;
+}
+table th {
+  color: var(--col5);
+  text-transform: uppercase;
+  background-color: rgba(255, 142, 0, 0.8);
+}
+table td {
+  background-color: rgba(27, 27, 27, 0.3);
+}
+table .name {
+  width: 20%;
+  border-top-left-radius: 1rem;
+}
+table .description {
+  width: 40%;
+}
+table .category {
+  width: 20%;
+}
+table .link {
+  width: 20%;
+  border-top-right-radius: 1rem;
+}
+
+@media only screen and (min-width: 820px) {
+  table {
+    width: 80%;
+  }
+  table th,
+  table td {
+    padding: 1rem;
+    text-align: left;
+  }
+  table .name {
+  }
+  table .link {
+  }
+}

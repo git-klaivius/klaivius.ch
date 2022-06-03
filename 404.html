@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <title>Klaive Vius</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/common.css" />
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Oxanium:wght@200;400;700&family=Smooch+Sans:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/about.css" />
+    <link rel="stylesheet" href="/static/css/schedule.css" />
+    <link rel="stylesheet" href="/static/css/datalog.css" />
+    <link rel="stylesheet" href="/static/css/resources.css" />
+    <link rel="stylesheet" href="/static/css/community.css" />
+    <link rel="stylesheet" href="/static/css/commission.css" />
+    <link rel="stylesheet" href="/static/css/collab.css" />
+  </head>
+  <body>
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      display="none"
+      xml:space="preserve"
+    >
+      <symbol id="youtube_symbol" viewBox="0 0 30 30">
+        <path
+          fill="inherit"
+          d="M29.246,7.843c-0.342-1.279-1.35-2.287-2.629-2.629C24.299,4.593,15,4.593,15,4.593s-9.298,0-11.617,0.621
+    c-1.279,0.342-2.287,1.35-2.629,2.629C0.133,10.162,0.133,15,0.133,15s0,4.838,0.621,7.156c0.342,1.28,1.35,2.288,2.629,2.629
+    C5.702,25.407,15,25.407,15,25.407s9.299,0,11.617-0.622c1.279-0.341,2.287-1.349,2.629-2.629C29.867,19.838,29.867,15,29.867,15
+    S29.867,10.162,29.246,7.843 M12.027,19.46v-8.92L19.753,15L12.027,19.46z"
+        />
+      </symbol>
+      <symbol id="twitter_symbol" viewBox="0 0 30 30">
+        <path
+          id="white_background"
+          fill="inherit"
+          d="M26.939,8.874c0.019,0.266,0.019,0.53,0.019,0.798
+		c0,8.141-6.197,17.527-17.529,17.527v-0.004c-3.346,0.004-6.624-0.953-9.442-2.762c0.486,0.057,0.976,0.086,1.466,0.088
+		c2.774,0.004,5.468-0.926,7.65-2.643c-2.636-0.049-4.947-1.77-5.754-4.277c0.923,0.178,1.875,0.141,2.781-0.107
+		c-2.874-0.579-4.941-3.105-4.941-6.037c0-0.027,0-0.053,0-0.078c0.856,0.477,1.814,0.741,2.795,0.77
+		C1.277,10.342,0.443,6.74,2.078,3.925c3.127,3.849,7.742,6.188,12.696,6.436c-0.496-2.14,0.181-4.381,1.782-5.885
+		c2.48-2.333,6.384-2.213,8.715,0.267c1.38-0.272,2.702-0.778,3.912-1.496c-0.459,1.426-1.422,2.638-2.708,3.408
+		c1.221-0.145,2.414-0.471,3.537-0.97C29.187,6.923,28.145,8.003,26.939,8.874z"
+        />
+      </symbol>
+      <symbol id="twitch_symbol" viewBox="0 0 30 30">
+        <path
+          fill="inherit"
+          d="M7.5,0L2.143,5.357v19.286h6.429V30l5.357-5.357h4.286L27.857,15V0H7.5z M25.715,13.929l-4.286,4.286
+			h-4.286l-3.75,3.75v-3.75H8.571V2.143h17.144V13.929z"
+        />
+        <rect
+          x="20.357"
+          y="5.893"
+          fill="inherit"
+          width="2.143"
+          height="6.428"
+        />
+        <rect
+          x="14.465"
+          y="5.893"
+          fill="inherit"
+          width="2.143"
+          height="6.428"
+        />
+      </symbol>
+      <symbol id="discord_symbol" viewBox="0 0 30 30">
+        <path
+          fill="inherit"
+          d="M25.396,5.45c-1.912-0.877-3.963-1.524-6.106-1.895c-0.039-0.007-0.078,0.011-0.099,0.047
+			c-0.264,0.469-0.556,1.081-0.76,1.562c-2.306-0.345-4.6-0.345-6.859,0c-0.205-0.492-0.507-1.093-0.772-1.562
+			c-0.021-0.035-0.059-0.052-0.098-0.047C8.56,3.924,6.509,4.571,4.596,5.45C4.58,5.457,4.565,5.469,4.556,5.484
+			C0.667,11.295-0.399,16.963,0.124,22.56c0.002,0.026,0.018,0.054,0.039,0.07c2.566,1.885,5.052,3.027,7.491,3.787
+			c0.039,0.012,0.08-0.003,0.105-0.035c0.577-0.789,1.092-1.619,1.533-2.492c0.026-0.052,0.001-0.111-0.052-0.132
+			c-0.816-0.31-1.593-0.688-2.34-1.116c-0.059-0.035-0.064-0.119-0.01-0.16c0.158-0.117,0.315-0.24,0.465-0.363
+			c0.027-0.021,0.065-0.027,0.097-0.013c4.91,2.24,10.226,2.24,15.077,0c0.031-0.016,0.069-0.012,0.099,0.011
+			c0.148,0.125,0.306,0.248,0.465,0.365c0.055,0.041,0.052,0.125-0.009,0.16c-0.746,0.437-1.523,0.807-2.341,1.114
+			c-0.054,0.02-0.077,0.082-0.051,0.134c0.45,0.873,0.965,1.703,1.532,2.492c0.023,0.032,0.064,0.047,0.104,0.035
+			c2.451-0.76,4.937-1.902,7.503-3.787c0.022-0.017,0.036-0.041,0.039-0.069c0.626-6.471-1.047-12.092-4.435-17.075
+			C25.428,5.469,25.413,5.457,25.396,5.45z M10.025,19.15c-1.479,0-2.696-1.356-2.696-3.022c0-1.667,1.194-3.024,2.696-3.024
+			c1.513,0,2.719,1.369,2.695,3.024C12.721,17.794,11.526,19.15,10.025,19.15z M19.994,19.15c-1.479,0-2.696-1.356-2.696-3.022
+			c0-1.667,1.193-3.024,2.696-3.024c1.513,0,2.719,1.369,2.695,3.024C22.689,17.794,21.507,19.15,19.994,19.15z"
+        />
+      </symbol>
+      <symbol id="twitch_color" viewBox="0 0 30 30">
+        <polygon
+          fill="#FFFFFF"
+          points="25.695,13.931 21.416,18.21 17.138,18.21 13.395,21.95 13.395,18.21 8.582,18.21 8.582,2.165 
+        25.695,2.165 	"
+        />
+        <path
+          fill="#9146FF"
+          d="M7.513,0.026L2.166,5.374v19.252h6.417v5.348l5.348-5.348h4.279L27.834,15V0.026H7.513z M25.695,13.931
+            l-4.279,4.279h-4.278l-3.743,3.74v-3.74H8.582V2.165h17.113V13.931z"
+        />
+        <rect
+          x="20.348"
+          y="5.908"
+          fill="#9146FF"
+          width="2.139"
+          height="6.418"
+        />
+        <rect
+          x="14.465"
+          y="5.908"
+          fill="#9146FF"
+          width="2.138"
+          height="6.418"
+        />
+      </symbol>
+      <symbol id="youtube_color" viewBox="0 0 30 30">
+        <path
+          fill="#FF0000"
+          d="M29.341,7.748c-0.344-1.296-1.358-2.317-2.646-2.664C24.36,4.455,15,4.455,15,4.455s-9.36,0-11.694,0.629
+        C2.018,5.431,1.003,6.452,0.659,7.748C0.034,10.098,0.034,15,0.034,15s0,4.902,0.625,7.251c0.344,1.296,1.358,2.317,2.646,2.664
+        C5.64,25.545,15,25.545,15,25.545s9.36,0,11.695-0.63c1.287-0.347,2.302-1.368,2.646-2.664C29.967,19.901,29.967,15,29.967,15
+        S29.967,10.098,29.341,7.748"
+        />
+        <polygon fill="#FFFFFF" points="11.939,19.45 19.762,15 11.939,10.55 " />
+      </symbol>
+    </svg>
+
+    <div id="welcome"></div>
+    <div id="topbar" style="display: none" class="noselect">
+      <img id="logo_topbar" src="/static/img/klvs.svg" draggable="false" />
+      <span>Klaive Vius</span>
+      <svg
+        id="menuicon"
+        width="44"
+        height="39"
+        viewBox="0 0 44 39"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        onclick="menuToggle('on');"
+      >
+        <line
+          y1="2.5"
+          x2="43.6087"
+          y2="2.5"
+          stroke="#262626"
+          stroke-width="5"
+        />
+        <line
+          y1="19.5"
+          x2="43.6087"
+          y2="19.5"
+          stroke="#262626"
+          stroke-width="5"
+        />
+        <line
+          y1="36.5"
+          x2="43.6087"
+          y2="36.5"
+          stroke="#262626"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+    <div id="menu-area" class="noselect menu-area-close">
+      <div id="menu">
+        <!-- <span class="row noselect" id="menuicon_space" style="display: none">
+        </span> -->
+        <div class="clock row noselect">
+          <span id="hours"></span>
+          <span class="separator">:</span>
+          <span id="minutes"></span>
+          <span id="ampm" style="margin-left: 7px"></span>
+        </div>
+        <button
+          id="about"
+          class="nav-link row tooltip"
+          onclick="changePage('about')"
+        >
+          <div class="diamond-loader" id="nav-loader-about"></div>
+          ABOUT
+          <span class="tooltiptext tlt-left no-ls"
+            >Self introduction and all about me!</span
+          >
+        </button>
+        <button
+          id="datalog"
+          class="nav-link row tooltip"
+          onclick="changePage('datalog')"
+        >
+          <div class="diamond-loader" id="nav-loader-datalog"></div>
+          DATA LOG
+          <span class="tooltiptext tlt-left no-ls"
+            >Character lore and fictions</span
+          >
+        </button>
+        <button
+          id="schedule"
+          class="nav-link row tooltip"
+          onclick="changePage('schedule')"
+        >
+          <div class="diamond-loader" id="nav-loader-schedule"></div>
+          SCHEDULE
+          <span class="tooltiptext tlt-left no-ls"
+            >Stream, Event and Collab schedule</span
+          >
+        </button>
+        <button
+          id="resources"
+          class="nav-link row tooltip"
+          onclick="changePage('resources')"
+        >
+          <div class="diamond-loader" id="nav-loader-resources"></div>
+          RESOURCES
+          <span class="tooltiptext tlt-left no-ls"
+            >Learning Resources / Stuffs I've made</span
+          >
+        </button>
+        <button
+          id="commission"
+          class="nav-link row tooltip"
+          onclick="changePage('commission')"
+        >
+          <div class="diamond-loader" id="nav-loader-commission"></div>
+          COMMISSION
+          <span class="tooltiptext tlt-left no-ls"
+            >Support me and get something in return!</span
+          >
+        </button>
+        <button
+          id="others"
+          class="nav-link row tooltip"
+          onclick="toggleOthers();"
+        >
+          <div class="diamond-loader" id="nav-loader-commission"></div>
+          OTHERS
+          <span style="font-size: var(--fsmin3)" id="dropdown-symbol"
+            >&#x25BC;</span
+          >
+        </button>
+
+        <div class="nav-others-rel">
+          <div class="nav-others">
+            <button
+              id="collab"
+              class="nav-link row tooltip nav-link-hidden"
+              onclick="toggleOthers();changePage('collab');"
+            >
+              <div class="diamond-loader" id="nav-loader-commission"></div>
+              COLLABORATE
+            </button>
+            <button
+              id="contact"
+              class="nav-link row tooltip nav-link-hidden"
+              onclick="toggleOthers();changePage('contact');"
+            >
+              <div class="diamond-loader" id="nav-loader-commission"></div>
+              CONTACT ME
+            </button>
+          </div>
+        </div>
+
+        <!-- social links -->
+
+        <span class="soc-link row" style="margin-top: 7%">
+          <a
+            href="https://bit.ly/klaivius-tw"
+            target="_blank"
+            rel="noopener noreferrer"
+            draggable="false"
+            id="twitch_link"
+            class="link"
+          >
+            <svg>
+              <use id="twitch_use" href="#twitch_symbol"></use>
+            </svg>
+          </a>
+          <a
+            href="https://bit.ly/klaivius-yt"
+            target="_blank"
+            rel="noopener noreferrer"
+            draggable="false"
+            id="youtube_link"
+            class="link"
+          >
+            <svg>
+              <use id="youtube_use" href="#youtube_symbol"></use>
+            </svg>
+          </a>
+        </span>
+        <span class="new_tab_note">(Opens in new tab)</span>
+        <div class="soc-link row" style="margin-top: 7%">
+          <a
+            href="https://bit.ly/klaivius-twt"
+            target="_blank"
+            rel="noopener noreferrer"
+            draggable="false"
+            id="twitter_link"
+            class="link"
+          >
+            <svg>
+              <use id="twitter_use" href="#twitter_symbol"></use>
+            </svg>
+          </a>
+          <a
+            href="https://bit.ly/klaivius-dsc"
+            target="_blank"
+            rel="noopener noreferrer"
+            draggable="false"
+            id="discord_link"
+            class="link"
+          >
+            <svg>
+              <use id="discord_use" href="#discord_symbol"></use>
+            </svg>
+          </a>
+        </div>
+        <span class="new_tab_note">(Opens in new tab)</span>
+
+        <!-- social links end -->
+      </div>
+    </div>
+    <div id="content-area"></div>
+
+    <img id="logo" src="/static/img/klvs.svg" draggable="false" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/schedule.js"></script>
+    <script src="/static/js/datalog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+.commission-ctn {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+.commission-ctn button {
+  font-size: var(--fsmin5);
+  font-family: var(--f-smooch);
+  background: linear-gradient(
+    0deg,
+    rgba(60, 122, 137, 0.3) 20%,
+    rgba(224, 225, 221, 0) 100%
+  );
+  cursor: pointer;
+  border: 1px solid var(--col1);
+  padding: 1rem;
+  min-height: 100px;
+
+  border-radius: 1rem;
+}
+.commission-ctn button:hover {
+  transform: scale(1.05);
+}
+.commission-ctn button:disabled {
+  background: linear-gradient(
+    0deg,
+    rgba(209, 34, 34, 0.3) 20%,
+    rgba(224, 225, 221, 0) 100%
+  );
+}
+
+.commission-ctn button:disabled::after {
+  color: var(--col1);
+  content: "\A[CLOSED]";
+  white-space: pre-wrap;
+}
+
+.commission-list-ctn {
+  margin-top: 1rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 45% 45%;
+  column-gap: 2%;
+  padding: 1rem;
+  row-gap: 1rem;
+}
+
+@media only screen and (min-width: 820px) {
+  .commission-list-ctn {
+    column-gap: 1%;
+    grid-template-columns: 24% 24% 24% 24%;
+  }
+  .commission-ctn button {
+    transition: 0.1s;
+  }
+}

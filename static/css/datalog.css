@@ -1,0 +1,143 @@
+.datalog-ctn {
+  width: 100%;
+}
+#datalog-console * {
+  animation: none;
+  font-family: var(--f-smooch);
+}
+#datalog-console {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  min-height: 500px;
+  max-height: 500px;
+  height: 100%;
+}
+#console-title {
+  display: flex;
+  align-items: center;
+  font-size: var(--fs3);
+  background-color: rgba(0, 0, 0, 1);
+  text-indent: 1rem;
+}
+#console-body {
+  padding: 0.5rem 1rem;
+  font-size: var(--fsmin4);
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#soc-console {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+#soc-console #twitter_use {
+  fill: #1da1f2;
+}
+#soc-console .soc-count {
+  margin-left: 0.5rem;
+  font-size: var(--fs2);
+}
+#soc-console svg {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+#record-list {
+  font-size: var(--fs2);
+  list-style: none;
+}
+#record-list li:nth-child(2) {
+  margin-top: 0.5rem;
+}
+#record-list li {
+  display: flex;
+  align-items: center;
+}
+#record-list button {
+  font-size: var(--fs2);
+  color: var(--col1);
+  text-decoration: none;
+  border: 1px solid var(--col1);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#record-list button:hover {
+  /* color: var(--col4); */
+  background: linear-gradient(
+    0deg,
+    rgba(60, 122, 137, 0.5) 0%,
+    rgba(224, 225, 221, 0) 100%
+  );
+}
+/* r-succ {
+  margin-left: 1rem;
+  color: rgba(0, 255, 0, 0.5);
+  font-size: var(--fsmin3);
+}
+r-notyet {
+  margin-left: 1rem;
+  color: rgb(255, 81, 81);
+  font-size: var(--fsmin3);
+} */
+
+.bigger {
+  font-size: var(--fs2);
+}
+h-idden {
+  visibility: hidden;
+}
+
+#nextupdate {
+  font-size: var(--fs1);
+  color: rgba(255, 255, 255, 0.25);
+}
+#console-loader {
+  content: "";
+  color: rgba(255, 255, 255, 0.25);
+}
+#console-loader::after{
+  content: "";
+  animation: changetext 0.5s infinite;
+}
+
+.record-ctn {
+  /* width:0; */
+  height: 0;
+  max-height: 300px;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow-y: scroll;
+  transition: 0.25s;
+  padding: 0;
+  opacity: 0;
+  text-align: justify;
+}
+.toggle-record-ctn {
+  width: 100%;
+  height: 300px;
+  padding: 1rem 2rem 1rem 1rem;
+  opacity: 1;
+}
+#progbar_full {
+  position: relative;
+  right: 10px;
+  font-size: var(--fsmin4);
+  white-space: nowrap;
+}
+.record-ctn p {
+  margin-top: 1rem;
+}
+
+/* NOT MOBILE */
+@media only screen and (min-width: 900px) {
+  .record-ctn {
+    max-width: 70%;
+  }
+  #progbar_full {
+    font-size: var(--fs1);
+  }
+  #prog {
+    position: relative;
+    bottom: 3px;
+  }
+}

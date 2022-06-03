@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap");
+
+:root {
+  --col1: #fa8f00;
+  --col3: #3c7a89;
+  --col4: #e0e1e2;
+  --col5: #272727;
+  --f-mont: "Montserrat", sans-serif;
+  --f-smooch: "Smooch Sans", sans-serif;
+  --f-oxa: "Oxanium", sans-serif;
+  --fsmin1: clamp(0.3rem, 0.6vmax, 1vmax);
+  --fsmin2: clamp(0.5rem, 0.8vmax, 1.2vmax);
+  --fsmin3: clamp(0.5rem, 1vmax, 1.5vmax);
+  --fsmin4: clamp(0.75rem, 1.2vmax, 1.75vmax);
+  --fsmin4-2: clamp(0.75rem, 0.8vmax, 1.5vmax);
+  --fsmin5: clamp(1rem, 1.3vmax, 2vmax);
+  --fs1: clamp(1rem, 1.25vmax, 1.5vmax);
+  --fs2: clamp(1.25rem, 1.5vmax, 1.7vmax);
+  --fs3: clamp(1.5rem, 1.75vmax, 1.9vmax);
+  --fs4: clamp(1.75rem, 1.9vmax, 2vmax);
+  --fs5: clamp(2rem, 2.2vmax, 2.4vmax);
+  --fs6: clamp(2.2rem, 2.5vmax, 3vmax);
+}
+
+* {
+  font-family: var(--f-oxa);
+  color: var(--col4);
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+}
+
+.ls {
+  letter-spacing: 3px;
+}
+.no-ls {
+  letter-spacing: normal;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 3rem;
+}
+.mt-4 {
+  margin-top: 4rem;
+}
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.ml-1 {
+  margin-left: 1rem;
+}
+.ml-2 {
+  margin-left: 2rem;
+}
+.ml-3 {
+  margin-left: 3rem;
+}
+.ml-4 {
+  margin-left: 4rem;
+}
+::-moz-selection {
+  color: var(--col4);
+  background: var(--col3);
+}
+
+::selection {
+  color: var(--col4);
+  background: var(--col3);
+}
+kl-aive {
+  letter-spacing: 0px;
+  color: var(--col1);
+}
+kl-aive2 {
+  color: var(--col1);
+  font-family: var(--f-mont);
+}
+smol-klaive {
+  font-size: var(--fsmin1);
+}
+change-page {
+  font-family: var(--f-smooch);
+  color: var(--col3);
+  cursor: pointer;
+  font-weight: 400 !important;
+}
+change-page:hover {
+  border-bottom: 1px solid var(--col3);
+}
+.noselect {
+  -webkit-touch-callout: none !important; /* iOS Safari */
+  -webkit-user-select: none !important; /* Safari */
+  -khtml-user-select: none !important; /* Konqueror HTML */
+  -moz-user-select: none !important; /* Old versions of Firefox */
+  -ms-user-select: none !important; /* Internet Explorer/Edge */
+  user-select: none !important; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+/* ////////////////////////////////////////// scrollbar */
+
+/* firefox */
+html {
+  scrollbar-color: #fa8e00 #262626;
+  scrollbar-width: thin;
+  overflow-y: overlay;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(26, 26, 26, 1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--col1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--col1);
+}
+/* ///////////////////////////////////// scrolbar end */
+
+/*/////////////////////////////////////// tooltip */
+.tooltiptext{
+  display:none;
+}
+@media only screen and (min-width: 900px) {
+  /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  display:inline-block;
+  visibility: hidden;
+  /* background-color: black; */
+  color: #fff;
+  text-align: center;
+  padding: 2px 0;
+  position: absolute;
+  z-index: 1;
+  font-size: var(--fsmin2);
+  font-family: var(--f-smooch);
+  font-weight: 400 !important;
+  letter-spacing: 1px;
+  transition: 0.15s;
+  opacity: 0;
+}
+.tlt-left {
+  bottom: 0;
+  left: 2px;
+}
+.nav-link .tlt-left {
+  bottom: 0;
+  left: 5px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  display: inline;
+  visibility: visible;
+  opacity: 1;
+}
+}
+/*//////////////////////////////////// tooltip end */
+
+abbr[title] {
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+  cursor: help !important;
+}

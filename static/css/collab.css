@@ -1,0 +1,61 @@
+.collab-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.collab-ctn p {
+  text-align: justify;
+}
+.collab-inner-ctn {
+  text-align: center;
+}
+
+.gametable {
+  display: grid;
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+  grid-template-columns: 25% 25% 25% 25%;
+  overflow: hidden;
+}
+
+.gametable img{
+    max-width: 100%;
+    -webkit-user-drag: none;
+}
+
+#collab-contact {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+  #collab-contact #twitter_use {
+    fill: #1da1f2;
+  }
+  #collab-contact #discord_use{
+    fill: #5865f2;
+  }
+  .collab-contact-grid{
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left:0.5rem;
+  }
+  .collab-contact-grid span{
+    font-size: var(--fsmin3);
+  }
+  #collab-contact svg , #collab-contact img{
+    max-width: 30px;
+    max-height: 30px;
+  }
+
+/* DESKTOP ONLY */
+@media only screen and (min-width: 900px) {
+  .collab-inner-ctn {
+    width: 60%;
+  }
+}
