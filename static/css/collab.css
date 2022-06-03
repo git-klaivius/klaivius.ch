@@ -29,6 +29,7 @@
 
 #collab-contact {
     margin-top: 1rem;
+    align-items: center;
     display: grid;
     grid-template-columns: 33% 33% 33%;
   }
@@ -51,6 +52,10 @@
   #collab-contact svg , #collab-contact img{
     max-width: 30px;
     max-height: 30px;
+  }
+
+  #klvsmail{
+    max-width: 80% !important;
   }
 
 /* DESKTOP ONLY */
