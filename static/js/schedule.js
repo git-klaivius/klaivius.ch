@@ -169,4 +169,4 @@ function getSchedule(month) {
   });
 }
 
-//Copyright2022@Klaivius
+//Copyright2022@klaivius
