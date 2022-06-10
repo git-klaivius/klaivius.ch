@@ -12,7 +12,7 @@
   display: grid;
   text-align: center;
   grid-template-columns: auto;
-  grid-template-rows: 3% 3% auto 50%;
+  grid-template-rows: 3% 3% auto 55%;
   row-gap: 1rem;
 }
 .grid-ctn > div {
@@ -112,7 +112,7 @@ sup {
     height: clamp(300px, 90vh, 43vmax);
     position: fixed;
     right: 20%;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 0 0 0 ;
     overflow: hidden;
   }
   #about-ctn #about {
