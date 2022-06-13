@@ -45,6 +45,11 @@
   row-gap: 1rem;
 }
 
+
+.commission-list-ctn button{
+  width:100%;
+}
+
 @media only screen and (min-width: 820px) {
   .commission-list-ctn {
     column-gap: 1%;
