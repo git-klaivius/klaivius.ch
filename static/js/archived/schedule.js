@@ -25,7 +25,7 @@ const months = [
 function getSchedule(month) {
   $.ajax({
     type: "POST",
-    url: "https://klaivius.pythonanywhere.com/getschedule",
+    url: "http://localhost:5000/getschedule",
     dataType: "json",
     data: { month: month },
     beforeSend: function () {

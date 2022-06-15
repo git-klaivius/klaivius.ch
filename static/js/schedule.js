@@ -23,7 +23,9 @@ const months = [
 ];
 
 function initSchedule(override = false) {
+  $("#sched").hide();
   $("#sched").html("");
+  
 
   let date = new Date();
   if (override == false) {
@@ -75,11 +77,16 @@ function initSchedule(override = false) {
 function getSchedule(month) {
   $.ajax({
     type: "POST",
-    url: "https://klaivius.pythonanywhere.com/getschedule",
+    url: "http://localhost:5000/getschedule",
     dataType: "json",
     data: { month: month },
-    beforeSend: function () {},
+    beforeSend: function () {
+      $("#sched").hide();
+      loader("#sch-loader","show");
+    },
     success: function (response) {
+      $("#sched").show();
+      loader("#sch-loader","hide");
       for (n = 0; n < 7; n++) {
         emptySchedEpoch_start = $("#sched" + n).data("epochstart");
         emptySchedEpoch_end = emptySchedEpoch_start + 86400000;
@@ -122,6 +129,7 @@ function getSchedule(month) {
       }
     },
     error: function () {
+      loader("#sch-loader","hide");
       console.log("bork");
     },
   });
