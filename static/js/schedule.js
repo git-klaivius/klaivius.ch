@@ -22,151 +22,145 @@ const months = [
   "Dec",
 ];
 
+function initSchedule(date) {
+  dateCursor = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  // dateCursor = new Date("2022", "5" , "16");
+
+  dateOffset = 86400000;
+
+  for (x = 0; x < 7; x++) {
+    dateEpoch = dateCursor.getTime() + dateOffset;
+    dateDate = dateCursor.getDate();
+    dateDay = weekday[dateCursor.getDay()];
+    dateMonth = months[dateCursor.getMonth()];
+
+    $("#sched").append(
+      `
+    <div data-epochStart="` +
+        dateEpoch +
+        `" class="le-schedule" id="sched` +
+        x +
+        `">
+    <span class="s-time">-</span>
+    <span class="s-date">
+        <span style="font-size:var(--fs2);color:var(--col1);" class="s-s-date">` +
+        dateDate +
+        ` ` +
+        dateMonth +
+        `</span>
+        <span style="font-size:var(--fsmin5);" class="s-s-day">` +
+        dateDay +
+        `</span>
+    </span>
+    <span class="s-title nostream">
+   
+    </span>
+    <span class="s-title-pc"></span>
+    </div>
+    `
+    );
+    dateCursor = new Date(dateEpoch);
+  }
+
+  getSchedule(date.getMonth() + 1);
+}
+
 function getSchedule(month) {
   $.ajax({
     type: "POST",
-    url: "https://klaivius.pythonanywhere.com/getschedule",
+    url: "http://localhost:5000/getschedule",
     dataType: "json",
     data: { month: month },
-    beforeSend: function () {
-      $("#errormsg").hide();
-      $("#nostream").hide();
-      $("#schedule-list-ctn").html("");
-      $("#archived-sched-ctn").hide();
-      $("#archived-sched-content ul").html("");
-      loader("#sch-loader","show");
-    },
+    beforeSend: function () {},
     success: function (response) {
-      loader("#sch-loader","hide");
-      $(".month_button_active").removeClass("month_button_active");
-      $(".month_button")
-        .eq(month - 1)
-        .addClass("month_button_active");
+      console.log(response);
+      //response to array
 
-      if (response == "") {
-        $("#nostream").show();
-      } else {
-        let now = new Date();
-        savedDate = "";
+      for (n = 0; n < 7; n++) {
+        emptySchedEpoch_start = $("#sched" + n).data("epochstart");
+        emptySchedEpoch_end = emptySchedEpoch_start + 86400000;
 
-        for (n = 0; n < response.length; n++) {
-          let date = new Date(response[n][2] * 1000);
-          let timeArray = get12hour(date);
-          let stream_platform = response[n][6];
+        for (x = 0; x < response.length; x++) {
+          if (checkRange(emptySchedEpoch_start, response[x][2] * 1000)) {
+            let date = new Date(response[x][2] * 1000);
+            let timeArray = get12hour(date);
+            let stream_formatted_time =
+              timeArray[0] + ":" + timeArray[1] + " " + timeArray[2];
+            let stream_title = response[x][1];
+            let stream_banner = response[x][4];
 
-          if(stream_platform == 'twitch'){
-            stream_link = "https://www.twitch.tv/klaivius";
-          } else if(stream_platform =='youtube'){
-            stream_link = "https://bit.ly/klvs-yt";
-          }
-          let stream_formatted_time =
-            timeArray[0] + ":" + timeArray[1] + " " + timeArray[2];
-          let stream_title = response[n][1];
-          let stream_day = weekday[date.getDay()];
-          let stream_date_day = date.getDate();
-          let stream_date_month = months[date.getMonth()];
-          let stream_date_year = date.getFullYear();
-
-          if (response[n][7] == 1) {
-            stream_canceled =
-              '<div class="cancelled">//// Cancelled ////</div>';
-          } else {
-            stream_canceled = "";
-          }
-
-          if (date > now - 3600000) {
-            if (date.getDate() != savedDate) {
-              $("#schedule-list-ctn").html(
-                $("#schedule-list-ctn").html() +
-                  `
-
-                <div class="sched-date-ctn mt-2">
-                  <div class="sched-date-bg1"></div>
-                  <div class="sched-date">
-                    <div class="day">` +
-                  stream_day +
-                  `</div>
-                    <div class="date">` +
-                  stream_date_day +
-                  ` ` +
-                  stream_date_month +
-                  ` ` +
-                  stream_date_year +
-                  `</div>
-                  </div>
-                  <div class="sched-date-bg2"></div>
-                </div>`
+            $("#sched" + n)
+              .children(".s-time")
+              .html(stream_formatted_time);
+            $("#sched" + n)
+              .children(".s-title")
+              .removeClass("nostream");
+            $("#sched" + n)
+              .children(".s-title")
+              .html(
+                `<span class="s-title-mb">` +
+                  stream_title +
+                  `</span><span class="s-time-pc">` +
+                  stream_formatted_time +
+                  `</span>`
               );
-            }
-
-            $("#schedule-list-ctn").html(
-              $("#schedule-list-ctn").html() +
-                `
-
-                <a class="streamlink" target="_blank" href="`+stream_link+`">
-              <div class="stream-ctn mt-1">` +
-                stream_canceled +
-                `
-                <div class="stream-platform">
-                  <svg>
-                    <use href="#` +
-                stream_platform +
-                `_color"></use>
-                  </svg>
-                </div>
-                <div class="stream-time">` +
-                stream_formatted_time +
-                `</div>
-                <div class="stream-title">` +
-                stream_title +
-                `</div>
-              </div>
-              </a>`
-            );
-
-            savedDate = stream_date_day;
-          } else {
-            $("#archived-sched-ctn").show();
-
-            $("#archived-sched-content ul").html(
-              $("#archived-sched-content ul").html() +
-                `
-
-              <li>
-                <svg>
-                  <use href="#` +
-                stream_platform +
-                `_color"></use>
-                </svg>
-                [` +
-                stream_date_day +
-                ` ` +
-                stream_date_month +
-                ` ` +
-                stream_date_year +
-                `, ` +
-                stream_day +
-                `, ` +
-                stream_formatted_time +
-                `] ` +
-                stream_title +
-                `
-              </li>`
-            );
+            $("#sched" + n)
+              .children(".s-title-pc")
+              .html(stream_title);
           }
         }
-
-        list = $("#archived-sched-content ul");
-        Array.from(list.children())
-          .reverse()
-          .forEach((element) => list.append(element));
       }
     },
     error: function () {
-      loader("#sch-loader","hide");
-      $("#errormsg").show();
+      console.log("bork");
     },
   });
 }
 
+function checkRange(epoch_start, epoch_target) {
+  epoch_end = epoch_start + 86400000;
+  if (epoch_target >= epoch_start && epoch_target < epoch_end) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var SMode_state = false;
+function toggleSMode() {
+  if (SMode_state) {
+    console.log("turned off");
+
+    SMode_state = false;
+  } else {
+    console.log("turned on");
+    
+    $("#sched-second-icon").attr("style", "background-color:var(--col1);");
+    $("#sched-second-link").attr("style", "color:var(--col1);");
+    $("#sched-second-link").html("klaivius.ch");
+    $("#second-icon").attr("src", "/static/img/url.png");
+    $("#not-a-link").html(`
+    <span style="font-size:1.5rem;font-family:var(--f-smooch);">
+    All time shown are in <span style="font-size:1.5rem;font-family:var(--f-smooch);color:var(--col1);">UTC+8</span>.
+    </span><br>Visit <span style="color:var(--col1);font-family:var(--f-smooch);">klaivius.ch/schedule</span> to view the schedule in your local time.`);
+    
+
+    SMode_state = true;
+  }
+}
+
+function onKonamiCode(cb) {
+  var input = '';
+  var key = '38384040373937396665';
+  document.addEventListener('keydown', function (e) {
+    input += ("" + e.keyCode);
+    if (input === key) {
+      return cb();
+    }
+    if (!key.indexOf(input)) return;
+    input = ("" + e.keyCode);
+  });
+}
+
+onKonamiCode(function () {toggleSMode();})
 //Copyright2022@klaivius
