@@ -115,7 +115,7 @@
 
   .s-time {
     color: var(--col1);
-    font-size: var(--fs4) !important;
+    /* font-size: 5px; */
   }
   .s-date {
     display: grid !important;
