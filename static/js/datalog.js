@@ -2,7 +2,7 @@ nextCriteriaCount = "none";
 function fetchDatalogData() {
   $.ajax({
     type: "POST",
-    url: "http://klaivius.pythonanywhere.com/datalog",
+    url: "https://klaivius.pythonanywhere.com/datalog",
     contentType: "application/json;charset=UTF-8",
     dataType: "json",
     beforeSend: function () {

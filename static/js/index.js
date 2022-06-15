@@ -146,7 +146,7 @@ function changePage(pageid, state = "push", subpage = false) {
 // function testget(){
 //   $.ajax({
 //     type: "POST",
-//     url: "http://klaivius.pythonanywhere.com/getschedule",
+//     url: "https://klaivius.pythonanywhere.com/getschedule",
 //     dataType: "json",
 //     data:{month:'4'},
 //     success: function (response) {

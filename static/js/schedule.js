@@ -68,7 +68,7 @@ function initSchedule(date) {
 function getSchedule(month) {
   $.ajax({
     type: "POST",
-    url: "http://klaivius.pythonanywhere.com/getschedule",
+    url: "https://klaivius.pythonanywhere.com/getschedule",
     dataType: "json",
     data: { month: month },
     beforeSend: function () {},
