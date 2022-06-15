@@ -8,8 +8,8 @@
 </style>
 <script>
   $("document").ready(function () {
-    let now = new Date();
-    initSchedule(now);
+
+    initSchedule();
     
   });
 </script>
@@ -18,7 +18,7 @@
     <span id="bg"></span>
     <div id="info">
         <div id="pic">
-            <img src="/static/img/banana_boi.PNG" alt="le_banana">
+            <img src="/static/img/banana_boi.PNG" alt="le_banana" draggable="false">
         </div>
         <div id="links">
             <a href="https://twitch.tv/klaivius" class="link-nodeco" target="_blank">
@@ -32,18 +32,22 @@
             <a href="https://twitter.com/klaivius" class="link-nodeco" target="_blank">
                 <div class="sched-link" id="second-link">
                 <span class="icon" id="sched-second-icon" style="background-color: #1da1f2;">
-                <img src="/static/img/twitter.png" alt="twitter icon" id="second-icon">
+                <img src="/static/img/twitter.png" alt="twitter icon" id="second-icon" draggable="false">
                 </span>
-                <span class="link" id="sched-second-link" style="color:#1da1f2;">klaivius</span>
+                <span class="link" id="sched-second-link" style="color:#1da1f2;">@klaivius</span>
             </div></a>
 
 
 
             <div id="not-a-link">
-                All time shown are in your <span style="color:var(--col1);font-family:var(--f-smooch);">local time</span>.
+                All time shown are in your <span style="color:var(--col1);font-family:var(--f-smooch);">local standard time</span>. 
+                <br>
+                <span id="DSTno">[ DST unaccounted ]</span> 
             </div>
         </div>
     </div>
+
+    <button id="toggleView" onclick="toggleSchedView();">Displaying relative schedule.<br>Click me to change to week schedule.</button>
 
     <div id="sched">
     </div>

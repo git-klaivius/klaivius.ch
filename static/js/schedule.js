@@ -22,14 +22,21 @@ const months = [
   "Dec",
 ];
 
-function initSchedule(date) {
-  dateCursor = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  // dateCursor = new Date("2022", "5" , "16");
+function initSchedule(override = false) {
+  $("#sched").html("");
+
+  let date = new Date();
+  if (override == false) {
+    dateCursor = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    console.log(date.getDate());
+  } else {
+    dateCursor = new Date(override[0], parseInt(override[1]), override[2]);
+  }
 
   dateOffset = 86400000;
 
   for (x = 0; x < 7; x++) {
-    dateEpoch = dateCursor.getTime() + dateOffset;
+    dateEpoch = dateCursor.getTime()
     dateDate = dateCursor.getDate();
     dateDay = weekday[dateCursor.getDay()];
     dateMonth = months[dateCursor.getMonth()];
@@ -53,13 +60,13 @@ function initSchedule(date) {
         `</span>
     </span>
     <span class="s-title nostream">
-   
+      
     </span>
     <span class="s-title-pc"></span>
     </div>
     `
     );
-    dateCursor = new Date(dateEpoch);
+    dateCursor = new Date(dateEpoch+dateOffset);
   }
 
   getSchedule(date.getMonth() + 1);
@@ -68,14 +75,11 @@ function initSchedule(date) {
 function getSchedule(month) {
   $.ajax({
     type: "POST",
-    url: "https://klaivius.pythonanywhere.com/getschedule",
+    url: "http://localhost:5000/getschedule",
     dataType: "json",
     data: { month: month },
     beforeSend: function () {},
     success: function (response) {
-      console.log(response);
-      //response to array
-
       for (n = 0; n < 7; n++) {
         emptySchedEpoch_start = $("#sched" + n).data("epochstart");
         emptySchedEpoch_end = emptySchedEpoch_start + 86400000;
@@ -98,7 +102,10 @@ function getSchedule(month) {
             $("#sched" + n)
               .children(".s-title")
               .html(
-                `<span class="s-title-mb">` +
+                `<img draggable="false" src="/static/img/sched_games/` +
+                  stream_banner +
+                  `.png"/>
+                <span class="s-title-mb">` +
                   stream_title +
                   `</span><span class="s-time-pc">` +
                   stream_formatted_time +
@@ -107,6 +114,9 @@ function getSchedule(month) {
             $("#sched" + n)
               .children(".s-title-pc")
               .html(stream_title);
+
+              response.splice(x,1);
+              // console.log(response);
           }
         }
       }
@@ -119,6 +129,9 @@ function getSchedule(month) {
 
 function checkRange(epoch_start, epoch_target) {
   epoch_end = epoch_start + 86400000;
+  // console.log("start:" + epoch_start);
+  // console.log("target:" + epoch_target);
+  // console.log("end:" + epoch_end);
   if (epoch_target >= epoch_start && epoch_target < epoch_end) {
     return true;
   } else {
@@ -126,15 +139,34 @@ function checkRange(epoch_start, epoch_target) {
   }
 }
 
+var schedview_mode = "relative"
+function toggleSchedView(){
+  if(schedview_mode=="relative"){//change to week view
+    var today = new Date();
+    nextMonday = addDays(today,Math.abs(today.getDay()-8));
+    initSchedule([nextMonday.getFullYear(), nextMonday.getMonth(), nextMonday.getDate()]);
+
+    $("#toggleView").html("Displaying week schedule.<br>Click me to change to relative schedule.")
+    schedview_mode = "week";
+  }else{
+    initSchedule();
+    $("#toggleView").html("Displaying relative schedule.<br>Click me to change to week schedule.")
+    schedview_mode = "relative";
+  }
+}
+
+function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
 var SMode_state = false;
 function toggleSMode() {
   if (SMode_state) {
-    console.log("turned off");
-
+    location.reload();
     SMode_state = false;
   } else {
-    console.log("turned on");
-    
     $("#sched-second-icon").attr("style", "background-color:var(--col1);");
     $("#sched-second-link").attr("style", "color:var(--col1);");
     $("#sched-second-link").html("klaivius.ch");
@@ -143,24 +175,27 @@ function toggleSMode() {
     <span style="font-size:1.5rem;font-family:var(--f-smooch);">
     All time shown are in <span style="font-size:1.5rem;font-family:var(--f-smooch);color:var(--col1);">UTC+8</span>.
     </span><br>Visit <span style="color:var(--col1);font-family:var(--f-smooch);">klaivius.ch/schedule</span> to view the schedule in your local time.`);
-    
 
     SMode_state = true;
   }
 }
 
 function onKonamiCode(cb) {
-  var input = '';
-  var key = '38384040373937396665';
-  document.addEventListener('keydown', function (e) {
-    input += ("" + e.keyCode);
+  var input = "";
+  var key = "38384040373937396665";
+  document.addEventListener("keydown", function (e) {
+    input += "" + e.keyCode;
     if (input === key) {
       return cb();
     }
     if (!key.indexOf(input)) return;
-    input = ("" + e.keyCode);
+    input = "" + e.keyCode;
   });
 }
 
-onKonamiCode(function () {toggleSMode();})
+onKonamiCode(function () {
+  toggleSMode();
+  $("#toggleView").toggle();
+});
+
 //Copyright2022@klaivius

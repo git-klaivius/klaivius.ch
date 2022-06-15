@@ -16,12 +16,11 @@
   filter: blur(8px);
 }
 #schedule-ctn #info {
-  margin: 5px;
-  margin-top: 1rem;
+  margin-top:5px;
   position: relative;
   /* background-color: red; */
   display: grid;
-  overflow: hidden;
+  /* overflow: hidden; */
   grid-template-columns: 50% 50%;
 }
 
@@ -36,8 +35,8 @@
   font-weight: 500;
   overflow: hidden;
 }
-.sched-link:hover{
-  background-color: rgba(0,0,0,0.5);
+.sched-link:hover {
+  background-color: rgba(0, 0, 0, 0.5);
   transition: 0.25s;
 }
 .sched-link .icon {
@@ -60,25 +59,36 @@
 }
 
 .sched-link .icon {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   aspect-ratio: 1/1;
 }
-.sched-link .icon img{
-  width:50%;
-  height:auto;
+.sched-link .icon img {
+  width: 50%;
+  height: auto;
 }
 
-#not-a-link{
+#not-a-link {
   padding: 0.5rem;
   font-family: var(--f-smooch);
   font-size: 1.5rem;
 }
 
+#toggleView {
+  position: relative;
+  z-index: 1;
+  margin-top:7px;
+  font-size: clamp(1em,1vw,1vw);
+  padding: 5px;
+  color: var(--col1);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--col1);
+}
+
 @media only screen and (max-width: 1200px) {
-  #schedule-ctn{
-    margin-top:2rem;
+  #schedule-ctn {
+    margin-top: 2rem;
     padding: 1rem 1rem 3rem 1rem;
   }
   .s-title-pc {
@@ -115,6 +125,9 @@
     background-color: var(--col4);
     box-shadow: 5px 5px black;
   }
+  .s-title img {
+    display: none !important;
+  }
   .s-title-mb {
     color: var(--col5);
   }
@@ -132,6 +145,7 @@
   }
   #schedule-ctn #info {
     /* border: 1px solid orange; */
+    margin-top:15px;
     max-width: 45%;
     grid-template-columns: 50% 50%;
     min-height: 200px;
@@ -169,6 +183,7 @@
   }
   .le-schedule .s-title {
     position: relative;
+    z-index: 1;
     width: 10vw;
     aspect-ratio: 3/5;
     order: 3;
@@ -185,12 +200,31 @@
     color: var(--col1);
     font-size: 2rem !important;
   }
+
+  .s-title img {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    /* opacity:0.95; */
+  }
+
   .s-title-mb {
-    display: none;
+    display: none !important;
   }
   .s-title-pc {
     display: flex;
     order: 4;
+  }
+
+  #toggleView{
+    position: absolute;
+    top:10px;
+    left:15px;
+    cursor:pointer;
+  }
+  #toggleView:hover{
+    transition: 0.5s;
+    background-color: rgba(0,0,0,0.7);
   }
 }
 
@@ -201,4 +235,12 @@
 }
 .nostream::after {
   content: "[ NO DATA ]" !important;
+}
+
+#DSTno {
+  bottom:5px;
+  position: relative;
+  font-family: var(--f-smooch);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
 }
