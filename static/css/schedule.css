@@ -30,6 +30,7 @@
 
 #schedule-ctn #info #pic img {
   max-width: 100%;
+  background-color: rgba(223, 224, 225, 0.3);
 }
 
 .sched-link {
