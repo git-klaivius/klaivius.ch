@@ -5,10 +5,11 @@ $("document").ready(function () {
   getCurrentPageID();
   changePage(currentPageID);
   updateTime();
+  requestCountUpdate();
 });
 
 window.onpopstate = function (event) {
-  console.log(event.state);
+  // console.log(event.state);
   if (event.state != null) {
     //if history.back() to the first landing page
     changePage(event.state, "replace");
@@ -63,7 +64,7 @@ function getCurrentPageID() {
       currentPageID = path.split("/")[1] + "-" + path.split("/")[2];
     }
 
-    console.log(currentPageID);
+    // console.log(currentPageID);
   } else {
     currentPageID = "about"; //if no path, go to about (default).
   }
@@ -208,4 +209,27 @@ $(document).click(function (tgt) {
 
 function highlightOthers() {
   $("#others").addClass("nav-active");
+}
+
+function requestCountUpdate(){
+  if (localStorage.getItem("localRequestedCount") === null) {
+    
+    $.post( "https://klaivius.pythonanywhere.com/addVisitor", function(data) {
+
+      $("#data-request-count").html(data);
+      localStorage.setItem("localRequestedCount",parseInt(data));
+
+      });
+
+      
+
+  } else {
+    
+    $.post( "https://klaivius.pythonanywhere.com/countVisitor", function(data) {
+
+      $("#data-request-count").html(data);
+
+      });
+
+  }
 }

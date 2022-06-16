@@ -12,7 +12,7 @@ function fetchDatalogData() {
       loader("#console-loader", "hide");
       $("#data-recovery-success").show();
 
-      console.log(response);
+      // console.log(response);
       $("#record-count").html(
         response.datalogs.length +
           " record(s) found. " +

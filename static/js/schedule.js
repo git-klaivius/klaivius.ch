@@ -30,7 +30,7 @@ function initSchedule(override = false) {
   let date = new Date();
   if (override == false) {
     dateCursor = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    console.log(date.getDate());
+    // console.log(date.getDate());
   } else {
     dateCursor = new Date(override[0], parseInt(override[1]), override[2]);
   }
