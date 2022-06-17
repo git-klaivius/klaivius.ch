@@ -20,6 +20,11 @@
   --fs4: clamp(1.75rem, 1.9vmax, 2vmax);
   --fs5: clamp(2rem, 2.2vmax, 2.4vmax);
   --fs6: clamp(2.2rem, 2.5vmax, 3vmax);
+  --fs7: clamp(3rem, 5vmax, 5vmax);
+
+  --twitchcol: #9146ff;
+  --twittercol: #1da1f2;
+  --youtubecol: #ff0000;
 }
 
 * {

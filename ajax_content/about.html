@@ -1,82 +1,140 @@
-<div id="about-ctn">
-  <div id="about">
-    <h2>HELLO WORLD</h2>
-    <p class="mt-1" id="hello-name">Hey!</p>
-
-    <p class="mt-1">
-      I'm <kl-aive2>Klaive</kl-aive2>! I either play games or code on stream. My
-      speciality is <kl-aive2>computer programming</kl-aive2> and
-      <kl-aive2>web app development</kl-aive2> .
+<div id="about-ctn" class="noselect">
+  <div id="content-ctn">
+    <h1>HELLO, WORLD!</h1>
+    <p>Hey! I'm <kl-aive>Klaive</kl-aive>!</p>
+    <p>
+      I either play <kl-aive>games</kl-aive> or <kl-aive>code</kl-aive> on
+      stream.
     </p>
-
-    <p class="mt-1">
-      All my livestreams will be on
-      <span style="color: #9146ff; font-weight: 700">Twitch</span>, while
-      VODs and any pre-recorded videos will be on
-      <span style="color: #ff0000; font-weight: 700">YouTube</span>. To see when
-      my next stream is, you visit my
-      <change-page onclick="changePage('schedule')">SCHEDULE</change-page> page
-      :)
+    <p>
+      I am a <kl-aive>software engineer</kl-aive> and
+      <kl-aive>full stack developer</kl-aive>.
     </p>
-    <p class="mt-1">
-      If you are a vtuber or streamer and is interested to do a collab stream
-      with me, visit my
-      <change-page onclick="changePage('collab')">COLLAB</change-page> page!
+    <br />
+    <p>I stream on <span style="color: var(--twitchcol);font-weight:bold;">Twitch</span>.</p>
+    <p>
+      Old VODs and Videos are on
+      <span style="color: var(--youtubecol);font-weight:bold;">YouTube</span>.
     </p>
-
-    <p
-      class="mt-3 noselect"
-      style="text-align: center; font-size: var(--fsmin2); color: var(--col1)"
-    >
-      © 2022 Klaive Vius<br /><br />
-
-      If you would like a custom site or portfolio for yourself or your
-      projects,<br />have a look at my
-      <change-page onclick="changePage('commission')">COMMISSION</change-page>
-      page :)
-    </p>
-  </div>
-
-  <div id="info" class="noselect">
-    <div class="grid-ctn">
-      <div>
-        <kl-aive>//</kl-aive> PROGRAM XXVI: KLAIVE VIUS
-        <kl-aive>//</kl-aive>
-      </div>
-      <div><kl-aive>'</kl-aive>Klaivius<kl-aive>'</kl-aive></div>
-      <div id="details">
-        <div class="details-grid">
-          <div class="category">GENDER</div>
-          <div class="content">Male</div>
-
-          <div class="category">AGE</div>
-          <div class="content">undefined</div>
-
-          <div class="category">MFG. DATE</div>
-          <div class="content">27th November</div>
-
-          <div class="category">HEIGHT</div>
-          <div class="content">1.69m (~5'7")</div>
-
-          <div class="category">SPECIES</div>
-          <div class="content">Virtual Android</div>
-
-          <div class="category">LANGUAGES</div>
-          <div class="content">
-            <abbr title="English">EN</abbr> /
-            <abbr title="Bahasa Malaysia">MY</abbr>
-          </div>
+    <div id="followers-ctn" class="mt-2">
+      <div id="followers-widget-ctn">
+        <div class="widget" id="widget-twitter">
+          <a
+            href="https://twitter.com/klaivius"
+            class="link-nodeco"
+            target="_blank"
+          >
+            <span class="icon">
+              <img src="/static/img/twitter.png" alt="twitter" />
+            </span>
+            <span class="count">?</span></a
+          >
+        </div>
+        <div class="widget" id="widget-twitch">
+          <a
+            href="https://twitch.tv/klaivius"
+            class="link-nodeco"
+            target="_blank"
+          >
+            <span class="icon"
+              ><img src="/static/img/twitch.png" alt="twitch"
+            /></span>
+            <span class="count">?</span></a
+          >
+        </div>
+        <div class="widget" id="widget-youtube">
+          <a href="https://bit.ly/klvs-yt" class="link-nodeco" target="_blank">
+            <span class="icon"
+              ><img src="/static/img/youtube.png" alt="youtube"
+            /></span>
+            <span class="count">?</span>
+          </a>
+        </div>
+        <div class="widget" id="widget-average">
+          <span class="count">? / ?</span>
+          <span>Total / Average</span>
         </div>
       </div>
-      <div class="model">
-        <img draggable="false" src="static/img/klaibe.png" />
-      </div>
-      <span id="artist-credit">
-        Hair by
-        <a href="https://www.fiverr.com/himekoii" target="_blank">himekoii</a>
-        ,
-        Outfit by <a href="https://lotz.booth.pm/" target="_blank">lotz</a>
-      </span>
     </div>
   </div>
+  <div id="model-ctn" class="mt-2">
+    <div id="vtuber-info" onclick="toggleRef();">
+      <div id="vtuber-info-grid" class="noselect">
+        <span
+          style="
+            grid-column: span 2;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--col1);
+            font-size: var(--fs3);
+          "
+          >[ Character Reference ]</span
+        >
+
+        <span class="title">FULL NAME</span>
+        <span class="content">Program 26: Klaive Vius</span>
+
+        <span class="title">GENDER</span>
+        <span class="content">Male</span>
+
+        <span class="title">AGE</span>
+        <span class="content">undefined</span>
+
+        <span class="title">MFG. DATE</span>
+        <span class="content">27th November</span>
+
+        <span class="title">HEIGHT</span>
+        <span class="content">1.69m (5'7")</span>
+
+        <span class="title">SPECIES</span>
+        <span class="content">Virtual Android</span>
+
+        <span class="title">LANGUAGES</span>
+        <span class="content">English / Malay</span>
+
+        <span
+          style="grid-column: span 2; text-align: center; margin-bottom: 1rem"
+          id="modelfrontback"
+        >
+          <img src="/static/img/model_pics/frontback.png" alt="model front"
+        /></span>
+      </div>
+    </div>
+    <img
+      src="/static/img/model_pics/2ts.png"
+      alt="klaive model"
+      onclick="toggleRef();"
+    />
+    <p>[ Click me ↑ for character reference ]</p>
+    <span id="credits">
+      <p>
+        [ Base by
+        <a href="https://vroid.com/" target="_blank">Vroid Studio</a> ]
+      </p>
+      <p>
+        [ Hair by
+        <a href="https://www.fiverr.com/himekoii" target="_blank">himekoii</a> ]
+      </p>
+      <p>
+        [ Outfit by <a href="https://lotz.booth.pm/" target="_blank">lotz</a> ]
+      </p>
+    </span>
+  </div>
 </div>
+
+<script>
+  function toggleRef() {
+    $("#vtuber-info").toggle();
+  }
+
+  $.post(
+    "https://klaivius.pythonanywhere.com/datalog",
+    function (data, status) {
+        $("#widget-twitter .count").html(data.followers.followerCount.twitter);
+        $("#widget-twitch .count").html(data.followers.followerCount.twitch);
+        $("#widget-youtube .count").html(data.followers.followerCount.youtube);
+        $("#widget-average .count").html(data.followers.followerCount.total+" / "+data.followers.followerCount.average);
+    //   alert(data.followers.followerCount.average);
+    }
+  );
+</script>

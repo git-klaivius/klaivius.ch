@@ -123,8 +123,7 @@
     grid-template-rows: 0.5fr 0.5fr;
     grid-gap: 0;
   }
-  .s-date span {
-  }
+
   .s-title {
     color: var(--col5);
     background-color: var(--col4);

@@ -1,0 +1,134 @@
+#about-ctn {
+  /* position: relative; */
+  /* height: 100%; */
+  width: 100%;
+  /* background-color: var(--col1); */
+}
+/* #about-ctn * {
+  border: 1px solid blue;
+} */
+.grid-ctn {
+  width: 100%;
+  display: grid;
+  text-align: center;
+  grid-template-columns: auto;
+  grid-template-rows: 3% 3% auto 55%;
+  row-gap: 1rem;
+}
+.grid-ctn > div {
+  width: 100%;
+}
+#about-ctn #info {
+  width: 100%;
+  padding-top: 1rem;
+  display: inline-flex;
+  justify-content: center;
+}
+
+#details {
+  justify-self: center;
+  width: 80%;
+  /* background-color: red; */
+  display: flex;
+}
+
+.details-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 45% 55%;
+}
+
+.details-grid .category {
+  padding-right: 0.5vmax;
+  color: var(--col1);
+  text-align: right;
+}
+.details-grid .content {
+  text-align: left;
+}
+
+/* ////////////////////////// CONTENT AREA */
+#about-ctn #about * {
+  font-family: var(--f-mont);
+  font-weight: 200;
+  /* border:1px solid beige; */
+}
+#about-ctn #about {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+#about-ctn #about p {
+  width: 95%;
+}
+#about-ctn #about h2 {
+  /* font-family: var(--f-mont); */
+  color: var(--col1);
+  font-size: var(--fs6);
+  text-align: center;
+  font-weight: 400;
+}
+#about-ctn #about p {
+  text-align: justify;
+
+  display: block;
+  font-size: var(--fs1);
+}
+/* #about-ctn #about li{
+  text-align: justify;
+} */
+#about-ctn #about #hello-name {
+  width: auto;
+}
+#about-ctn #about ul {
+  width: 70%;
+}
+sup {
+  font-size: var(--fsmin1);
+}
+
+.model {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.model img {
+  width:auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* DESKTOP ONLY */
+@media only screen and (min-width: 900px) {
+  #about-ctn #info {
+    border: 1px solid var(--col1);
+    font-size: var(--fsmin3);
+    background: linear-gradient(
+      0deg,
+      rgba(60, 122, 137, 0.5) 0%,
+      rgba(224, 225, 221, 0) 100%
+    );
+    width: clamp(180px, 20%, 20vmax);
+    height: clamp(300px, 90vh, 43vmax);
+    position: fixed;
+    right: 20%;
+    padding: 1rem 0 0 0 ;
+    overflow: hidden;
+  }
+  #about-ctn #about {
+    width: 80%;
+    /* text-align: ce */
+    /* display: inline-flex; */
+  }
+  #about-ctn #about p {
+    width: 70%;
+  }
+  #artist-credit{
+    position: absolute;
+    bottom: 5px;
+    right:5px;
+    background-color: rgba(0,0,0,0.8);
+    font-size: var(--fsmin2);
+    padding:5px;
+  }
+}

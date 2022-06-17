@@ -148,6 +148,15 @@ button {
   border: none;
   outline: none;
 }
+@media only screen and (min-width: 1200px) {
+#data-request{
+  display:block !important;
+  position: fixed;
+  bottom:2px;
+  left:4px;
+}
+}
+
 @media only screen and (min-width: 769px) {
   #menu {
     display: inline-flex;
@@ -189,6 +198,7 @@ button {
   .nav-link:hover {
     color: var(--col3);
   }
+  
 }
 #content-area {
   position: absolute;
@@ -308,7 +318,28 @@ section {
 .soc-link {
   animation: entrance 400ms 1400ms linear backwards 1;
 }
-#content-area * {
+/* #content-area * {
+  animation: opacity 1s 0ms linear backwards 1;
+} */
+.datalog-ctn{
+  animation: opacity 1s 0ms linear backwards 1;
+}
+.commission-ctn{
+  animation: opacity 1s 0ms linear backwards 1;
+}
+.contact-ctn{
+  animation: opacity 1s 0ms linear backwards 1;
+}
+.collab-ctn{
+  animation: opacity 1s 0ms linear backwards 1;
+}
+.resources-ctn{
+  animation: opacity 1s 0ms linear backwards 1;
+}
+#schedule-ctn{
+  animation: opacity 1s 0ms linear backwards 1;
+}
+#about-ctn{
   animation: opacity 1s 0ms linear backwards 1;
 }
 #info {
@@ -388,9 +419,5 @@ section {
   min-height: 30px;
 }
 
-#data-request{
-  position: absolute;
-  bottom:2px;
-  left:2px;
-}
+
 
