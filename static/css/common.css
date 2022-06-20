@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap");
-
 :root {
   --col1: #fa8f00;
   --col3: #3c7a89;
@@ -36,7 +34,7 @@
   box-sizing: border-box;
 }
 
-.link-nodeco{
+.link-nodeco {
   text-decoration: none;
 }
 .ls {
@@ -46,6 +44,9 @@
   letter-spacing: normal;
 }
 
+.mt-0-5 {
+  margin-top: 10px;
+}
 .mt-1 {
   margin-top: 1rem;
 }
@@ -113,7 +114,6 @@ change-page:hover {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-
 /* ////////////////////////////////////////// scrollbar */
 
 /* firefox */
@@ -144,48 +144,48 @@ html {
 /* ///////////////////////////////////// scrolbar end */
 
 /*/////////////////////////////////////// tooltip */
-.tooltiptext{
-  display:none;
+.tooltiptext {
+  display: none;
 }
 @media only screen and (min-width: 900px) {
   /* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  display:inline-block;
-  visibility: hidden;
-  /* background-color: black; */
-  color: #fff;
-  text-align: center;
-  padding: 2px 0;
-  position: absolute;
-  z-index: 1;
-  font-size: var(--fsmin2);
-  font-family: var(--f-smooch);
-  font-weight: 400 !important;
-  letter-spacing: 1px;
-  transition: 0.15s;
-  opacity: 0;
-}
-.tlt-left {
-  bottom: 0;
-  left: 2px;
-}
-.nav-link .tlt-left {
-  bottom: 0;
-  left: 5px;
-}
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    display: inline-block;
+    visibility: hidden;
+    /* background-color: black; */
+    color: #fff;
+    text-align: center;
+    padding: 2px 0;
+    position: absolute;
+    z-index: 1;
+    font-size: var(--fsmin2);
+    font-family: var(--f-smooch);
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+    transition: 0.15s;
+    opacity: 0;
+  }
+  .tlt-left {
+    bottom: 0;
+    left: 2px;
+  }
+  .nav-link .tlt-left {
+    bottom: 0;
+    left: 5px;
+  }
 
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  display: inline;
-  visibility: visible;
-  opacity: 1;
-}
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    display: inline;
+    visibility: visible;
+    opacity: 1;
+  }
 }
 /*//////////////////////////////////// tooltip end */
 
