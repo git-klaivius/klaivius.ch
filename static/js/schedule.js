@@ -74,12 +74,11 @@ function initSchedule(override = false) {
   getSchedule(date.getMonth() + 1);
 }
 
-function getSchedule(month) {
+function getSchedule() {
   $.ajax({
     type: "POST",
     url: "https://klaivius.pythonanywhere.com/getschedule",
     dataType: "json",
-    data: { month: month },
     beforeSend: function () {
       $("#sched").hide();
       loader("#sch-loader","show");
