@@ -148,10 +148,10 @@ function checkRange(epoch_start, epoch_target) {
 
 var schedview_mode = "relative"
 function toggleSchedView(){
-  if(schedview_mode=="relative"){//change to week view
+  if(schedview_mode=="relative"){//change to week view (nearest monday)
     var today = new Date();
-    nextMonday = addDays(today,Math.abs(today.getDay()-8));
-    initSchedule([nextMonday.getFullYear(), nextMonday.getMonth(), nextMonday.getDate()]);
+    today.setDate(Math.abs(today.getDate() + ((7 - today.getDay()) % 7 + 1) % 7))
+    initSchedule([today.getFullYear(), today.getMonth(), today.getDate()]);
 
     $("#toggleView").html("Displaying week schedule.<br>Click me to change to relative schedule.")
     schedview_mode = "week";
@@ -162,11 +162,11 @@ function toggleSchedView(){
   }
 }
 
-function addDays(date, days) {
-  var result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
-}
+// function addDays(date) {
+//   var result = new Date(date);
+//   result.setDate(Math.abs(result.getDate() + ((7 - result.getDay()) % 7 + 1) % 7));
+//   return result;
+// }
 
 var SMode_state = false;
 function toggleSMode() {
