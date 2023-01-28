@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;200;300;400;500;600;700&display=swap");
+
+:root {
+  --col1: #fa8f00;
+  --col2: #e0e1e2;
+  --col3: #272727;
+  --f-smooch: "Smooch Sans", sans-serif;
+
+  --twitchcol: #9146ff;
+  --twittercol: #1da1f2;
+  --youtubecol: #ff0000;
+}
+
+* {
+  font-family: var(--f-smooch);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class*="pure-u"] {
+  /* Set your content font stack here: */
+  font-family: var(--f-smooch), sans-serif;
+}
+
+.noselect {
+  -webkit-touch-callout: none !important; /* iOS Safari */
+  -webkit-user-select: none !important; /* Safari */
+  -khtml-user-select: none !important; /* Konqueror HTML */
+  -moz-user-select: none !important; /* Old versions of Firefox */
+  -ms-user-select: none !important; /* Internet Explorer/Edge */
+  user-select: none !important; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+p {
+  margin: 0 !important;
+}
+s-1 {
+  color: var(--col1) !important;
+}
+s-twitch {
+  color: var(--twitchcol) !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--col3);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--col1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #834d06;
+}
+
+
+/* loader */
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  border:4px solid #0000;
+  border-radius: 50%;
+  border-color:#FABC4D #0000;
+  animation: s6 1s infinite linear;
+}
+.custom-loader::before,
+.custom-loader::after {    
+  content:"";
+  grid-area: 1/1;
+  margin:2px;
+  border:inherit;
+  border-radius: 50%;
+}
+.custom-loader::before {
+  border-color:#FA8F00 #0000;
+  animation:inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.custom-loader::after {
+  margin:8px;
+}
+
+@keyframes s6 { 
+  100%{transform: rotate(1turn)}
+}

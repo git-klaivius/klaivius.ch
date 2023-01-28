@@ -1,0 +1,116 @@
+@import url("/static/stylesheets/format.css");
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--col3);
+}
+
+#bgvid {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(30px);
+  -webkit-filter: blur(30px);
+}
+
+#over-ctn {
+  /* position: fixed; */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0px 0px 10px rgba(255, 143, 0, 0.3))
+    drop-shadow(0px 0px 10px rgba(255, 143, 0, 0.3));
+  box-sizing: border-box;
+}
+
+#main-ctn {
+  background-color: rgba(27, 27, 27, 0.75);
+  width: 90%;
+  min-height: 95%;
+  background-size: 6px 6px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(27, 27, 27, 0.25) 0,
+    rgba(27, 27, 27, 0.25) 0.6px,
+    rgba(44, 44, 44, 0.5) 0,
+    rgba(44, 44, 44, 0.5) 50%
+  );
+  clip-path: polygon(0 4%, 8% 0, 100% 0, 100% 96%, 92% 100%, 0 100%);
+}
+#intro {
+  color: white;
+}
+#soc-links .twitter:hover {
+  filter: brightness(0) saturate(100%) invert(53%) sepia(56%) saturate(2581%)
+    hue-rotate(176deg) brightness(97%) contrast(97%);
+}
+#soc-links .twitch:hover {
+  filter: brightness(0) saturate(100%) invert(46%) sepia(74%) saturate(6448%)
+    hue-rotate(250deg) brightness(101%) contrast(102%);
+}
+#soc-links .youtube:hover {
+  filter: brightness(0) saturate(100%) invert(25%) sepia(88%) saturate(7483%)
+    hue-rotate(357deg) brightness(105%) contrast(118%);
+}
+#soc-links img {
+  cursor: pointer;
+}
+/* DESKTOP ONLY */
+@media only screen and (min-width: 767px) {
+  #main-ctn {
+    /* width: 70%; */
+    /* min-height: 80%; */
+    clip-path: polygon(0 5%, 2.5% 0, 100% 0, 100% 95%, 97.5% 100%, 0 100%);
+    box-sizing: border-box;
+    padding: 2rem;
+    margin-top:2rem;
+    margin-bottom:2rem;
+  }
+  #intro {
+    margin-left: 1rem;
+  }
+  #intro p {
+    font-size: 1.75rem;
+  }
+  #subctn-intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  #schedbox {
+    border: 1px solid white;
+    padding: 1rem;
+    display: flex;
+    overflow-y:auto;
+  }
+  #schedbox div {
+    /* background-color: gray; */
+    height: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  #schedbox .date{
+    color:var(--col1);
+  }
+  #schedbox .day{
+    color:var(--col2);
+  }
+  #schedbox .banner{
+    max-width: 100%;
+    max-height:100%;
+    /* background-color: red; */
+    overflow: hidden;
+  }
+  #schedbox .banner img{
+    max-height:100%;
+    object-fit: cover;
+  }
+  
+}
