@@ -1,0 +1,12 @@
+Options +ExecCGI +FollowSymLinks -MultiViews
+
+RewriteEngine On
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteCond %{THE_REQUEST} /([^.]+)\.mp3 [NC]
+RewriteRule ^ /%1 [NC,L,R]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+RewriteCond %{REQUEST_FILENAME}.mp3 -f
+RewriteRule ^ %{REQUEST_URI}.mp3 [NC,L]
+
