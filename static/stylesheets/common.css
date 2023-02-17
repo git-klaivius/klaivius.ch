@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap');
 
 :root {
   --col1: #fa8f00;
   --col2: #e0e1e2;
   --col3: #272727;
+  --colred: #9c2f2f;
+  --colblue: #246fbf;
   --f-smooch: "Smooch Sans", sans-serif;
-
+  --f-mont: 'Montserrat', sans-serif;
+  --f-bask: 'Baskerville', serif;
   --twitchcol: #9146ff;
   --twittercol: #1da1f2;
   --youtubecol: #ff0000;
@@ -38,7 +43,7 @@ textarea,
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 p {
-  margin: 0 !important;
+  margin: 0;
 }
 s-1 {
   color: var(--col1) !important;
@@ -95,6 +100,20 @@ s-twitch {
 }
 .custom-loader::after {
   margin:8px;
+}
+.btn1{
+  text-decoration: none;
+  border:1px solid var(--col1);
+  color:var(--col1);
+  padding:0.5rem;
+  border-radius:0.25rem;
+  background-color: rgba(0,0,0,0.25);
+  transition:0.25s;
+  cursor: pointer;
+}
+.btn1:hover{
+  background-color: rgba(0,0,0,0.5);
+  border-radius:0.5rem;
 }
 
 @keyframes s6 { 

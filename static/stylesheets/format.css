@@ -20,10 +20,31 @@
   margin-top: 4rem;
 }
 
+.ml-0-25{
+  margin-left:0.25rem;
+}
 .ml-1 {
   margin-left: 1rem;
 }
 
+.fs-1{
+  font-size:1rem;
+}
+.fs-1-25{
+  font-size:1.25rem;
+}
+.fs-1-5{
+  font-size:1.5rem;
+}
+.fs-1-75{
+  font-size:1.75rem;
+}
+.fs-2{
+  font-size:2rem;
+}
+.fs-3{
+  font-size:3rem;
+}
 .none {
   display: none !important;
 }

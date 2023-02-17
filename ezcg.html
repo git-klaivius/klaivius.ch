@@ -1,0 +1,58 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generate CSS for your stream chat!">
+    <meta name="keywords" content="EZCG, Klaive, Vtuber, ENVtuber, MYVtuber, MyVT">
+    <meta name="author" content="Klaive Vius">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/static/media/favicon.ico">
+    <title>Klaive Vius🔸EZCG Landing</title>
+    <link rel="stylesheet" href="/static/stylesheets/index.css" />
+    <link rel="stylesheet" href="/static/stylesheets/common.css" />
+    <link rel="stylesheet" href="/static/stylesheets/format.css" />
+    
+    <style>
+        .togglewidth{
+            width:100% !important;
+        }
+    </style>
+  </head>
+  <body>
+    <video autoplay playsinline muted loop id="bgvid" class="noselect">
+      <source src="/static/media/bgvid1.m4v" type="video/mp4" />
+    </video>
+
+    <div id="over-ctn" class="noselect">
+        <div id="main-ctn" >
+
+            <div class="subctn">
+                <div id="lytuber" style="width:100%;text-align:center;">
+                    <a href="/" class="btn1">Back to main</a>
+                
+                    <div class="mt-2" style="color:var(--col2);">
+                        <h1 class="fs-3" style="margin:1rem;font-family:var(--f-mont);">EZChatGen</h1>
+                        <p class="fs-1" style="font-family:var(--f-mont);">EZChatGen is a free CSS generator for your stream chat!
+                        <br>
+                        No download required!</p>
+
+                        <br>
+                        <img src="/static/media/ezcg_summary.png" alt="ezcg summary" style="width:50%;height:auto;cursor:pointer;" onclick="this.classList.toggle('togglewidth')">
+                        
+                        <br><br><br>
+                        <a href="/app/ezcg" class="btn1" style="font-size:2rem;padding:1rem 1.5rem;">Launch EZCG</a>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/packages/jquery-3.6.2.min.js"></script>   
+    <script src="/static/scripts/common.js"></script>
+ 
+  </body>
+</html>

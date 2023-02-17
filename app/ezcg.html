@@ -1,0 +1,479 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="description" content="Generate CSS for your stream chat!">
+    <meta name="keywords" content="EZCG, Klaive, Vtuber, ENVtuber, MYVtuber, MyVT">
+    <meta name="author" content="Klaive Vius">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/static/media/favicon.ico">
+    <title>Klaive🔸EZChatGen</title>
+    <link rel="stylesheet" href="/static/stylesheets/index.css" />
+    <link rel="stylesheet" href="/static/stylesheets/common.css" />
+    <link rel="stylesheet" href="/static/stylesheets/format.css" />
+
+    <style>
+        .ezcg-ctn *{
+            font-family:var(--f-mont);
+        }
+        #ezcg-singlechat-size input{
+            max-width:70px;
+            height:22px;
+            outline:none;
+        }
+        #main-ctn{  
+            overflow: auto;
+        }
+        #main-ctn input,
+        #main-ctn textarea{
+            outline:none;
+            border:1px solid var(--col1);
+            padding:0.25rem;
+            border-radius:5px;
+        }
+        #ezcg-chatimage-label input[type="file"] {
+            display: none;
+        }
+
+        .sliderColor{
+            background-color: gray !important;
+        }
+
+        #chat-preview{
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
+        .properties-content{
+            font-size:0.75rem;
+            padding-top:0.75rem;
+            padding-left:1.5rem;
+            color:white;
+            border:1px solid var(--col1);
+            padding:1rem 0 1rem 2.5rem;
+        }
+        .properties-label{
+            color:var(--col1);
+            margin-left:-1.3rem;
+            display:block;
+        }
+        .properties-inputctn{
+            padding:0.25rem 0.25rem 0.25rem 0.25rem;
+            margin: 0.25rem 2rem 0.25rem 0;
+            border-radius:5px;
+        }
+        .properties-row{
+            display:flex;
+        }
+        .checkboxBtn{
+            min-width:25px;
+            min-height:25px;
+            background-color: rgba(27, 27, 27, 0.95);
+            border:1px solid var(--col1);
+            color: var(--col1);
+            cursor:pointer;
+            font-family: var(--f-bask);
+        }
+        .checkboxBtn-inactive{
+            background-color: rgba(255,255,255,0.05);
+        }
+        .checkboxBtn-active{
+            background-color: rgba(27, 27, 27, 0.95);
+        }
+        .positionSlider{
+            width: 250px;
+            cursor: pointer;
+        }
+        input{
+            margin-top:5px;
+        }
+        .ezcg_navBtn{
+            text-decoration: none;
+            border:1px solid var(--col1);
+            border-bottom: none;
+            color:var(--col1);
+            padding:0.5rem;
+            border-radius:0.25rem;
+            background-color: rgba(255,255,255,0.05);
+            transition:0.25s;
+            cursor: pointer;
+        }
+        .ezcg_navBtn:hover{
+            background-color: rgba(0,0,0,0.25);
+        }
+        .ezcg_navBtn-active{
+            background-color: rgba(0,0,0,0.5);
+        }
+        .positionSlider{
+            appearance: none;
+            height:10px;
+            padding:0 !important;
+        }
+        .positionSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: var(--col1);
+            cursor: pointer;
+            border-radius: 5rem;
+          }
+          
+        .positionSlider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #696969;
+            cursor: pointer;
+            border-radius: 5rem;
+          }
+          input[type='color']{
+            cursor: pointer;
+          }
+
+          #chat-preview{
+            position:relative;
+            width:420px;
+            height:69px;
+          }
+          #chat-preview > div{
+            cursor:grab;
+          }
+          #chat-preview-username{
+            position:absolute;
+            overflow:hidden;
+            text-overflow: ellipsis;
+          }
+          #chat-preview-username-name{
+            overflow:hidden;
+            text-overflow: ellipsis;
+          }
+          #chat-preview-message{
+            position:absolute;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+          }
+          .style_bold{
+            font-weight:bold;
+          }
+          .style_italic{
+            font-style: italic;
+          }
+          .style_underline{
+            text-decoration: underline;
+          }
+
+          #support_links a:hover img{
+            transition:0.2s;
+            transform: scale(1.025);
+          }
+          #properties-generate button:hover{
+            transition:0.2s;
+            transform: scale(1.025);
+          }
+
+    </style>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+  </head>
+  <body>
+    
+    <video playsinline muted loop id="bgvid" class="noselect">
+      <source src="/static/media/bgvid1.m4v" type="video/mp4"/>
+    </video>
+
+    
+    <div id="over-ctn" class="noselect">
+        <div id="main-ctn" style="background-color: rgba(27, 27, 27, 0.95);padding-top:1.25rem;min-width:1000px;" class="ezcg-ctn">
+            <div id="ezcg-top-menu" style="display:flex;font-size:0.75rem;">
+                <label for="ezcg-chatimage-file" id="ezcg-chatimage-label">
+                    <input type="file" id="ezcg-chatimage-file" accept="image/*" oninput="ezcg_setImage(this.files);"/>
+                    <div class="btn1" style="padding:0.75rem 1rem 0.75rem 1rem;font-size:0.75rem;" >Select Image</div>
+                </label>
+                
+                <div id="ezcg-singlechat-size" style="display:grid;color:white;text-align:center;" class="ml-1">
+                    <div>Chat Box Size</div>
+                    <div>
+                        <input type="number" name="ezcg_chatsize_w" id="ezcg_chatsize_w" oninput="boundingbox.setWidth(this.value)" value="420">
+                        x
+                        <input type="number" name="ezcg_chatsize_h" id="ezcg_chatsize_h" oninput="boundingbox.setHeight(this.value)" value="69">
+                    </div>
+                </div>
+
+                <div id="ezcg-showguideoutline" style="display:grid;color:white;text-align:center;" class="ml-1">
+                    <div>Show Guide Outline</div>
+                    <div>
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                        <input type="checkbox" oninput="document.getElementById('checkboxslider1').classList.toggle('sliderColor');"
+                        id="checkbox_guideOutline" onchange="toggleGuideOutline();">
+                        <span class="slider round sliderColor" id="checkboxslider1"></span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div id="ezcg-manual" style="display:grid;color:white;text-align:center;justify-content:center;align-items:center;" class="ml-1">
+                        <a href="/static/doc/ezcg_manual.pdf" style="text-decoration:none;">
+                            <button class="btn1" style="display:flex;align-items:center;">
+                                <span class="material-icons" style="font-size:1rem;margin-right:0.25rem;">help</span>
+                                User Manual
+                            </button>
+                        </a>
+
+                </div>
+
+                
+                <a href="/" class="btn1" style="margin-left:auto;align-self:center;padding:5px;display:flex;justify-content:center;">
+                    <span class="material-icons" style="font-size:1rem;margin-right:0.25rem;">logout</span>
+                    Back to main page
+                </a>
+            </div>
+
+            <div id="ezcg-preview-menu" style="width:100%;min-height:200px;max-height:400px;overflow:hidden;background-color:rgb(69, 69, 69);margin-top:1rem;display:grid;justify-content:center;align-items:center;">
+                <div id="chat-preview">
+                    <div id="chat-preview-username" style="display:flex;align-items:center;">
+                        <img src="/static/media/ezcg/badge1.png" style="height:17px;margin-right:5px;display:none;" id="badge">
+                        <span id="chat-preview-username-name"></span>
+                    </div>
+                    <div id="chat-preview-message"></div>
+                </div>
+            </div>
+
+            <!--Properties Nav-->
+            <div id="ezcg-properties-menu" style="width:100%;margin-top:0.75rem;">
+                <div id="properties-nav">
+                    <button class="ezcg_navBtn ezcg_navBtn-active" style="font-size:0.75rem;padding:0.75rem 2rem;border-radius:15px 15px 0 0;" onclick="changePropertiesNav('preview');this.classList.toggle('ezcg_navBtn-active')">Preview</button>
+                    <button class="ezcg_navBtn" style="font-size:0.75rem;padding:0.75rem 2rem;border-radius:15px 15px 0 0;margin-left:0.5rem;" onclick="changePropertiesNav('style');this.classList.toggle('ezcg_navBtn-active')">Style & Position</button>
+                    <button class="ezcg_navBtn" style="font-size:0.75rem;padding:0.75rem 2rem;border-radius:15px 15px 0 0;margin-left:0.5rem;" onclick="changePropertiesNav('generate');this.classList.toggle('ezcg_navBtn-active')">Generate</button>
+                </div>
+                
+                <!--Properties Preview-->
+                <div id="properties-preview" class="properties-content">
+                    <span class="properties-label">🔶 This section is only for the preview window.</span>
+
+                    <div class="properties-inputctn">
+                        <label for="properties_preview_username_input">Test Username</label><br>
+                        <input type="text" style="width:250px;" class="mt-0-25" id="properties_preview_username_input" oninput="document.getElementById('chat-preview-username-name').innerHTML=this.value;saveInput(this.id,this.value);" value="klaivius">
+                    </div>
+                    <div class="properties-inputctn">
+                        <label for="properties_preview_message_input">Test Message</label><br>
+                        <textarea type="text" style="min-width:350px;min-height:100px;max-width:550px;max-height:150px;" class="mt-0-25" id="properties_preview_message_input" oninput="document.getElementById('chat-preview-message').innerHTML=this.value;saveInput(this.id,this.value);"></textarea>
+                    </div>
+                </div>
+
+                <!--Properties Style-->
+                <div id="properties-style" class="properties-content" style="display:none"> 
+                    <span class="properties-label">🔶 Style the username here!</span>
+
+                    <div class="properties-row">
+                        <div class="properties-inputctn">
+                            <label for="properties_style_username_font">Username Font (Local fonts)</label><br>
+                            <input type="text" style="width:250px;" id="properties_style_username_font" oninput="usernamePreview.setFont(this.value);saveInput(this.id,this.value);" value="cOmIc SAnS mS">
+                        </div>
+    
+                        <div class="properties-inputctn">
+                            <label for="properties_style_username_color">Username Color</label><br>
+                            <div style="display:flex;align-items:center;">
+                                <label class="switch" style="margin-top:5px;">
+                                    <input type="checkbox" id="properties_style_username_useColor" oninput="document.getElementById('checkboxslider2').classList.toggle('sliderColor');
+                                    document.getElementById('properties_style_username_rainbow').classList.toggle('none');document.getElementById('properties_style_username_color').classList.toggle('none');saveInput(this.id,this.checked)" checked>
+                                    <span class="slider round" id="checkboxslider2"></span>
+                                </label>
+
+                                <input type="text" disabled value="Chat Default" class="ml-0-25 none" style="width:150px;background-color:white;color:black;" id="properties_style_username_rainbow">
+                                <input type="color" style="width:150px;padding:0;" class="ml-0-25 mt-0-25" id="properties_style_username_color" oninput="usernamePreview.setColor(this.value);saveInput(this.id,this.value)" value="#FFFFFF">
+                            </div>
+                        </div>
+
+                        <div class="properties-inputctn">
+                            <label for="properties_style_username_size">Username Size</label><br>
+                            <input type="number" style="width:50px;margin-right:5px;" id="properties_style_username_size" min="8" oninput="usernamePreview.setSize(this.value);saveInput(this.id,this.value)" value="17">px
+                        </div>
+
+                        <div class="properties-inputctn">
+                            <label>Username Style</label><br>
+                            <div style="margin-top:5px;display:flex;">
+                                <button class="checkboxBtn checkboxBtn-inactive" id="properties_style_username_bold_btn" style="font-style:bold;margin-right:2px;" onclick="document.getElementById('properties_style_username_bold').checked=!document.getElementById('properties_style_username_bold').checked;usernamePreview.toggleBold();saveInput('properties_style_username_bold',document.getElementById('properties_style_username_bold').checked)">B</button>
+                                <input type="checkbox" id="properties_style_username_bold" class="none">
+
+
+                                <button class="checkboxBtn checkboxBtn-inactive" id="properties_style_username_italic_btn"  style="font-style:italic;margin-right:2px;" onclick="document.getElementById('properties_style_username_italic').checked=!document.getElementById('properties_style_username_italic').checked;usernamePreview.toggleItalic();saveInput('properties_style_username_italic',document.getElementById('properties_style_username_italic').checked)">I</button>
+                                <input type="checkbox" id="properties_style_username_italic" class="none">
+
+                                <button class="checkboxBtn checkboxBtn-inactive" id="properties_style_username_underline_btn" style="text-decoration:underline;margin-right:5px;" onclick=" document.getElementById('properties_style_username_underline').checked=!document.getElementById('properties_style_username_underline').checked;usernamePreview.toggleUnderline();saveInput('properties_style_username_underline',document.getElementById('properties_style_username_underline').checked)">U</button>
+                                <input type="checkbox" id="properties_style_username_underline" class="none">
+
+                                <button class="checkboxBtn" style="margin-right:2px;" onclick="changeAlignmentRadio('username','left');" id="usernameAlign_left">
+                                    <span class="material-icons" style="font-size:1rem;">format_align_left</span>
+                                </button>
+                                <button class="checkboxBtn checkboxBtn-inactive" style="margin-right:2px;" onclick="changeAlignmentRadio('username','center');" id="usernameAlign_center">
+                                    <span class="material-icons" style="font-size:1rem;">format_align_center</span>
+                                </button>
+                                <button class="checkboxBtn checkboxBtn-inactive" style="margin-right:2px;" onclick="changeAlignmentRadio('username','right');" id="usernameAlign_right">
+                                    <span class="material-icons" style="font-size:1rem;">format_align_right</span>
+                                </button>
+
+                                <div class="none">
+                                    <input type="radio" id="username_align_left" name="properties_style_username_align" value="align_left" checked>
+                                    <input type="radio" id="username_align_center" name="properties_style_username_align" value="align_center">
+                                    <input type="radio" id="username_align_right" name="properties_style_username_align" value="align_right">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="properties-row">
+                        <div class="properties-inputctn" style="position:relative;">
+                            <label for="properties_style_username_rotation">Username Rotation</label>
+                            <span class="material-icons" style="position:absolute;right:5px;cursor:pointer;font-size:1.25rem;"
+                            onclick="document.getElementById('properties_style_username_rotation').value='0';usernamePreview.setRotation(0);saveInput('properties_style_username_rotation',0);">
+                                restart_alt
+                            </span>
+                            <br>
+                            <input type="range" id="properties_style_username_rotation" class="positionSlider" min="-180" max="180" value="0" oninput="usernamePreview.setRotation(this.value);saveInput(this.id,this.value);">
+                        </div>
+
+                        <div class="properties-inputctn" style="position:relative;">
+                            <label for="properties_style_username_maxWidth">Username Max Width</label>
+                            <br>
+                            <input type="range" id="properties_style_username_maxWidth" class="positionSlider" min="10" max="420" value="350" oninput="usernamePreview.setMaxWidth(this.value);saveInput(this.id,this.value);">
+                        </div>
+                        <!-- <div class="properties-inputctn" style="position:relative;">
+                            <label for="properties_style_username_showBadges">Show Badges</label>
+                            <br>
+                            <label class="switch" style="margin-top:5px;">
+                                <input type="checkbox" oninput="document.getElementById('checkboxslider3').classList.toggle('sliderColor');document.getElementById('badge').classList.toggle('none');saveInput(this.id,this.checked);" id="properties_style_username_showBadges" checked>
+                                <span class="slider round" id="checkboxslider3"></span>
+                            </label>
+                        </div> -->
+                    </div>
+
+                    <span class="properties-label mt-1" >🔶 Style the message here!</span>
+
+                    <div class="properties-row">
+                        <div class="properties-inputctn">
+                            <label for="properties_style_message_font">Message Font (Local fonts)</label><br>
+                            <input type="text" style="width:250px;" id="properties_style_message_font" oninput="messagePreview.setFont(this.value);saveInput(this.id,this.value);" value="Century Gothic">
+                        </div>
+    
+                        <div class="properties-inputctn">
+                            <label for="properties_style_message_color">Message Color</label><br>
+                            <input type="color" name="properties_style_message_color" id="properties_style_message_color" style="width:150px;padding:0;" class="mt-0-25" oninput="messagePreview.setColor(this.value);saveInput(this.id,this.value);">
+                        </div>
+
+                        <div class="properties-inputctn">
+                            <label for="properties_style_message_size">Message Size</label><br>
+                            <input type="number" style="width:50px;margin-right:5px;" id="properties_style_message_size" min="8" value="13" oninput="messagePreview.setSize(this.value);saveInput(this.id,this.value)">px
+                        </div>
+
+                        <div class="properties-inputctn">
+                            <label>Message Style</label><br>
+                            <div style="margin-top:5px;display:flex;">
+                                <button class="checkboxBtn checkboxBtn-inactive" id="properties_style_message_bold_btn" style="font-weight:bolder;margin-right:2px;" onclick="document.getElementById('properties_style_message_bold').checked=!document.getElementById('properties_style_message_bold').checked;messagePreview.toggleBold();saveInput('properties_style_message_bold',document.getElementById('properties_style_message_bold').checked)">B</button>
+                                <input type="checkbox" id="properties_style_message_bold" class="none">
+
+                                <button class="checkboxBtn checkboxBtn-inactive" id="properties_style_message_italic_btn" style="font-style:italic;margin-right:2px;" onclick="document.getElementById('properties_style_message_italic').checked=!document.getElementById('properties_style_message_italic').checked;messagePreview.toggleItalic();saveInput('properties_style_message_italic',document.getElementById('properties_style_message_italic').checked)">I</button>
+                                <input type="checkbox" id="properties_style_message_italic" class="none">
+
+                                <button class="checkboxBtn checkboxBtn-inactive" id="properties_style_message_underline_btn" style="text-decoration:underline;margin-right:5px;" onclick="document.getElementById('properties_style_message_underline').checked=!document.getElementById('properties_style_message_underline').checked;messagePreview.toggleUnderline();saveInput('properties_style_message_underline',document.getElementById('properties_style_message_underline').checked)">U</button>
+                                <input type="checkbox" id="properties_style_message_underline" class="none">
+
+                                <button class="checkboxBtn" style="margin-right:2px;" onclick="changeAlignmentRadio('message','left');messagePreview.changeAlignment('left');" id="messageAlign_left">
+                                    <span class="material-icons" style="font-size:1rem;">format_align_left</span>
+                                </button>
+                                <button class="checkboxBtn checkboxBtn-inactive" style="margin-right:2px;" onclick="changeAlignmentRadio('message','center');messagePreview.changeAlignment('center');" id="messageAlign_center">
+                                    <span class="material-icons" style="font-size:1rem;">format_align_center</span>
+                                </button>
+                                <button class="checkboxBtn checkboxBtn-inactive" style="margin-right:2px;" onclick="changeAlignmentRadio('message','right');messagePreview.changeAlignment('right');" id="messageAlign_right">
+                                    <span class="material-icons" style="font-size:1rem;">format_align_right</span>
+                                </button>
+
+                                <div class="none">
+                                    <input type="radio" id="message_align_left" name="properties_style_message_align" value="align_left" checked>
+                                    <input type="radio" id="message_align_center" name="properties_style_message_align" value="align_center">
+                                    <input type="radio" id="message_align_right" name="properties_style_message_align" value="align_right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="properties-row">
+                        <div class="properties-inputctn" style="position:relative;">
+                            <label for="properties_style_message_rotation">Message Rotation</label>
+                            <span class="material-icons" style="position:absolute;right:5px;cursor:pointer;font-size:1.25rem;"
+                            onclick="document.getElementById('properties_style_message_rotation').value='0';messagePreview.setRotation(0);saveInput(this.id,this.value);">
+                                restart_alt
+                            </span>
+                            <br>
+                            <input type="range" id="properties_style_message_rotation" class="positionSlider" min="-180" max="180" value="0" oninput="messagePreview.setRotation(this.value);saveInput(this.id,this.value)">
+                        </div>
+
+                        <div class="properties-inputctn">
+                            <label for="properties_style_message_maxWidth">Message Max Width</label>
+                            <br>
+                            <input type="range" id="properties_style_message_maxWidth" class="positionSlider" min="10" max="420" value="350" oninput="messagePreview.setMaxWidth(this.value);saveInput(this.id,this.value);">
+                        </div>
+
+                        <div class="properties-inputctn">
+                            <label for="properties_style_message_maxLines">Message Max Lines</label><br>
+                            <input type="number" style="width:50px;margin-right:5px;" id="properties_style_message_maxLines" min="1" value="1" oninput="messagePreview.setMaxLines(this.value);saveInput(this.id,this.value);"> lines
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!--Properties Generate-->
+                <div id="properties-generate" class="properties-content" style="display:none">
+                    <span class="properties-label">🔶 Please select a platform to generate CSS</span>
+                    <button class="btn1 mt-0-5"s style="background-color:rgba(255,255,255,0.05)" onclick="generateCSS('se');">
+                        <img src="/static/media/ezcg/logo_streamelements.webp" alt="StreamElements" style="max-width:200px;">
+                    </button>
+
+                    <button class="btn1 mt-0-5" style="margin-left:0.5rem;background-color:rgba(255,255,255,0.05)" onclick="generateCSS('sl');">
+                        <img src="/static/media/ezcg/logo_streamlabs.webp" alt="StreamLabs" style="max-width:200px;">
+                    </button>
+
+                    <span class="properties-label mt-2">🔶 Here's your CSS! (<span id="css_platform" style="color:white;">Select platform first</span>)</span>
+                    <textarea name="css" cols="50" rows="5" class="mt-0-5" id="genCSS" onclick="if(this.innerHTML != ''){this.select();document.execCommand('copy');document.getElementById('cssCopied').innerHTML='Copied to clipboard!'};" readonly></textarea>
+                    <br>
+                    <span id="cssCopied"></span><br>
+
+                    <a href="/static/doc/ezcg_manual.pdf" style="text-decoration:none;">
+                        <button class="btn1" style="display:flex;align-items:center;">
+                            <span class="material-icons" style="font-size:1rem;margin-right:0.25rem;">help</span>
+                            Installation Guide
+                        </button>
+                    </a>
+
+                    <span class="properties-label mt-2">🔶 If you liked it, please consider supporting me <span style="font-size:16px;">👉<span style="margin-left:-0.3rem;">👈</span></span></span>
+                    <div class="mt-0-5" id="support_links">
+                        <a href="https://bit.ly/klvs-twt" target="_blank">
+                            <img src="/static/media/ezcg/support_twitter.webp" style="border-radius:0.5rem;max-width:170px;margin-right:0.5rem;border:2px solid white;">
+                        </a>
+                        
+                        <a href="https://bit.ly/klvs-tw" target="_blank">
+                            <img src="/static/media/ezcg/support_twitch.webp" style="border-radius:0.5rem;max-width:170px;margin-right:0.5rem;border:2px solid white;">
+                        </a>
+                        
+                        <a href="https://bit.ly/klvs-kf" target="_blank">
+                            <img src="/static/media/ezcg/support_kofi.webp" style="border-radius:0.5rem;max-width:170px;margin-right:0.5rem;border:2px solid white;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <span style="position:fixed;top:5px;left:5px;color:white;">EZChatGen beta1.0</span>
+    
+    <script src="./ezcg.js"></script>
+    
+  </body>
+</html>
