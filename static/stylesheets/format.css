@@ -68,3 +68,7 @@
 .hvr-underline:hover {
   text-decoration: underline;
 }
+
+.align-l *{
+  text-align:left;
+}

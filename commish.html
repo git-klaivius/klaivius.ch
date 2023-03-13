@@ -1,0 +1,107 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Commission me to code!">
+    <meta name="keywords" content="Commission, Klaive, Vtuber, ENVtuber, MYVtuber, MyVT">
+    <meta name="author" content="Klaive Vius">
+
+    <link rel="icon" type="image/x-icon" href="/static/media/favicon.ico">
+    <title>Klaive Vius🔸Commission</title>
+    <link rel="stylesheet" href="/static/stylesheets/index.css" />
+    <link rel="stylesheet" href="/static/stylesheets/common.css" />
+    <link rel="stylesheet" href="/static/stylesheets/format.css" />
+    
+    <style>
+      *{
+        font-family: var(--f-qs);
+      }
+      
+      #question-overctn{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .question-ctn{
+        width:clamp(70%,700px,70%);
+        display:grid;
+        text-align: center;
+      }
+      .question-ctn h2{
+        color:var(--col1);
+        
+      }
+
+      .question-ctn button{
+        margin-top:8px;
+        font-size: 0.9rem;
+        color:white;
+        border:1px solid white;
+        font-family: var(--f-qs);
+      }
+      .question-ctn button.active{
+        color:var(--col1);
+        border:1px solid var(--col1);
+      }
+
+      .estimated-ctn{
+        border:1px solid var(--col1);
+        width:100%;
+        padding:1rem;
+        
+      }
+      .estimated-ctn h2{
+        color:var(--col1);
+        margin:0;
+        padding:0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <video autoplay playsinline muted loop id="bgvid" class="noselect">
+      <source src="/static/media/bgvid1.m4v" type="video/mp4" />
+    </video>
+
+    <div id="over-ctn" class="noselect">
+        <div id="main-ctn" >
+
+            <div class="subctn">
+                <div style="width:100%;text-align:center;">
+                    <a href="/" class="btn1">Back to main</a>
+                
+                    <div class="mt-2" style="color:var(--col2);">
+
+
+                        <p>Congratulations! You found an incomplete page! How did you find this?
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+      var selected_answers = {};
+
+      function addAnswer(question,value,elem,uniqueAnswer=false){
+        selected_answers[question] = value;
+
+        if(uniqueAnswer){
+          $("#"+question+" button").removeClass('active');
+        }
+
+        $(elem).toggleClass('active');
+      }
+
+    
+    </script>
+    <script src="/static/packages/jquery-3.6.2.min.js"></script>   
+    <script src="/static/scripts/common.js"></script>
+ 
+  </body>
+</html>
