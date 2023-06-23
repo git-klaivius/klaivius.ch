@@ -1,7 +1,9 @@
-if (window.location.host.substr(-10) == '.github.io' && window.location.protocol != 'https:') {
+
+$( document ).ready(function() {
+    if (window.location.host.substr(-10) == '.github.io' && window.location.protocol != 'https:') {
     window.location.protocol = 'https:';
 }
-
+});
 
 function get12hour(date) {
   let h = date.getHours();
